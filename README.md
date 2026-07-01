@@ -1,22 +1,48 @@
 # Ismail's Primitives
 
+### A Unified Functional Theory of Necessity, Independence, and Sequential Dependence in Adaptive Decision Systems
+
 [![build](https://github.com/M-Ismail-ZA/IsmailsPrimitives/actions/workflows/build.yml/badge.svg)](https://github.com/M-Ismail-ZA/IsmailsPrimitives/actions/workflows/build.yml)
+[![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.21110934-blue)](https://doi.org/10.5281/zenodo.21110934)
 
 A complete Lean 4 / Mathlib formalization of **Ismail's Primitives**: a
-functional theory of necessity, independence, and sequential dependence for
-adaptive decision-making under uncertainty. This repository contains the
-formal, machine-checked companion to the paper of the same name.
+functional theory of what any sequential decision-maker — a person, an
+institution, or a machine — must get right before sustained success under
+real uncertainty is even possible. This repository contains the formal,
+machine-checked companion to [the paper of the same name](https://doi.org/10.5281/zenodo.21110934).
 
-The theory identifies six structural primitives that a decision-making
-algorithm must possess to achieve sublinear regret in a general class of
-partially observable environments, and proves — entirely inside Lean's type
-theory, checked by the kernel — that each primitive is:
+The theory identifies six structural failures that recur across investing,
+operations, public policy, and machine learning, and characterizes six
+matching primitives — proving, entirely inside Lean's type theory and
+checked by the kernel:
 
-- **necessary** (its absence forces linear regret in some environment),
-- **mutually independent** (no primitive is derivable from the others), and
-- **sequentially dependent** (the primitives form an ordered informational
-  chain, culminating in a martingale convergence result for the learning
-  posterior).
+| | Primitive | In one line |
+|---|---|---|
+| **X1** | Objective Tracking | Tell apart two hypotheses that prescribe different actions |
+| **X2** | Cross-Context Safety Transfer | Stop touching the action that locks in permanent loss |
+| **X3** | Global Attractor Exploration | Keep probing past a comfortable plateau toward a better region |
+| **X4** | Policy Simplification | Commit decisively once the evidence supports one option |
+| **X5** | Feasibility Projection | Respect a hard constraint rather than trade it off |
+| **X6** | Feedback Adaptation | Discard stale evidence once the world has changed |
+
+For each, the repository proves:
+
+- **necessity** — its absence forces linear regret in a minimal environment
+  exhibiting the matching structural failure (Part I, six independent
+  theorems);
+- **mutual independence** — for every one of the thirty ordered pairs, the
+  algorithm built for one primitive is shown to lack a different one when
+  redeployed on that primitive's home turf (Part II, one master theorem);
+  and
+- **a verified sequential-dependence scaffold** — six information-theoretic
+  links (forward, reverse, and non-reversibility results per link) connect
+  the primitives into a cycle X1 → X2 → ⋯ → X6 → X1, closing on an actual
+  Doob martingale construction (Part III). This is a logical scaffold, not
+  a closed sufficiency proof: several links carry explicit, named
+  "Implementation Obligations" — stated hypotheses this paper does not
+  discharge for any concrete algorithm, left open by design for a specific
+  instantiation to supply. See Section 8 and the Summary of Results in the
+  paper for exactly which obligations remain.
 
 ## Status
 
@@ -28,7 +54,7 @@ theory, checked by the kernel — that each primitive is:
 | `opaque` | 0 |
 | Linter suppressions | 0 |
 | Lean toolchain | `leanprover/lean4:v4.30.0` |
-| Mathlib | verified against `v4.30.0` |
+| Mathlib | `v4.30.0` (pinned; see `lakefile.lean`) |
 
 Every definition and theorem in this repository is proved from Mathlib's
 axioms alone — no `sorry`, no custom `axiom`, no `opaque` escape hatches, and
@@ -106,10 +132,22 @@ and `import SixPrimitives` (or a specific phase, e.g. `import SixPrimitives.Phas
 ## Relation to the paper
 
 This formalization is standalone: it does not depend on the paper, and every
-result here is fully self-contained and machine-checked. The paper, in turn,
-cites this repository as the source of truth for its formal claims. The paper
-is still in preparation and is not yet public; this repository is released
-first so the formal results can be inspected and verified independently.
+result here is fully self-contained and machine-checked. The paper cites
+this repository as the source of truth for its formal claims, and every
+numbered definition and theorem in the paper is mapped to its exact Lean
+identifier and line range in the paper's Appendix A.
+
+📄 **Read the paper**: [DOI 10.5281/zenodo.21110934](https://doi.org/10.5281/zenodo.21110934)
+
+## Citation
+
+If you build on or extend this work, please cite:
+
+```
+Ismail, M. (2026). Ismail's Primitives: A Unified Functional Theory of
+Necessity, Independence, and Sequential Dependence in Adaptive Decision
+Systems. Zenodo. https://doi.org/10.5281/zenodo.21110934
+```
 
 ## License
 
