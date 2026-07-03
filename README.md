@@ -44,7 +44,7 @@ Every claim above traces to a specific, named identifier in this repository
 | `axiom`             | 0                              |
 | `opaque`            | 0                              |
 | Linter suppressions | 0                              |
-| Lean toolchain      | `leanprover/lean4:v4.30.0-rc2` |
+| Lean toolchain      | `leanprover/lean4:v4.30.0` |
 | Mathlib             | verified against `v4.30.0`     |
 
 Every definition and theorem in this repository is proved from Mathlib's
