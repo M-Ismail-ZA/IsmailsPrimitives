@@ -135,7 +135,9 @@ faith.
 **Paper:** *Ismail's Primitives: A Unified Functional Theory of Necessity,
 Independence, and Sequential Dependence in Adaptive Decision Systems*,
 Muhammed Ismail, Zenodo, V6.1 (2026).
-DOI: [10.5281/zenodo.21177368](https://doi.org/10.5281/zenodo.21177368)
+DOI: [10.5281/zenodo.21177368](https://doi.org/10.5281/zenodo.21177368) 
+
+📄 Also in this repository: [full PDF](paper/Ismails_Primitives.pdf) · [Markdown edition](paper/PAPER.md)
 
 ## License
 
