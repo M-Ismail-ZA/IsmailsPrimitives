@@ -1,0 +1,1080 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ismail's Primitives — A Unified Functional Theory for Any Decision Maker</title>
+<meta name="description" content="Six primitives, proven necessary and mutually irreplaceable for any sequential decision under uncertainty, machine-checked in Lean 4. Explore how investment, insurance, and consultancy decisions fall in Class C, and what building real success on top of that floor requires.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&amp;family=Figtree:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+
+/* ────────────────────────────────────────────────────────────────
+   TOKENS
+──────────────────────────────────────────────────────────────── */
+:root {
+  --paper:        #FFFFFF;
+  --paper-raised: #F5F5F7;
+  --paper-sunken: #ECECEF;
+  --ink:          #1A2130;
+  --ink-dim:      #4D5566;
+  --ink-faint:    #8A8F7E;
+  --ink-faint2:   #97927e;
+  --line:         #E5E1D3;
+  --line-strong:  #D2C9AF;
+  --shadow-rgb:   26,33,48;
+
+  --navy:      #1B2A4A;
+  --navy-ink:  #101a30;
+  --maroon:    #6B1E2B;
+  --maroon-ink:#4c151f;
+  --bottle:    #14392E;
+  --bottle-ink:#0d281f;
+  --mustard:   #CC5500;
+  --mustard-ink:#9A3F00;
+  --mustard-rgb: 204,85,0;
+
+  /* six-primitive identity colors, used consistently everywhere X1–X6 appear */
+  --x1: #3B5BA5;  /* Objective Tracking             — clear blue   */
+  --x2: #A5333B;  /* Cross-Context Safety Transfer  — alert red    */
+  --x3: #2F7A5E;  /* Global Attractor Exploration   — growth green */
+  --x4: #B9861E;  /* Policy Simplification          — amber        */
+  --x5: #6B4C8A;  /* Feasibility Projection         — violet       */
+  --x6: #46707A;  /* Feedback Adaptation            — slate teal   */
+
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body: 'Figtree', -apple-system, sans-serif;
+  --font-mono: ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+
+  --radius: 10px;
+  --radius-sm: 6px;
+  --maxw: min(1160px, 92vw);
+  --maxw-wide: min(1440px, 94vw);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
+}
+
+body {
+  margin: 0; color: var(--ink);
+  font-family: var(--font-body); line-height: 1.68; font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  background-color: var(--paper);
+  background-image:
+    radial-gradient(ellipse 620px 420px at 6% 0%,   rgba(27,42,74,.04),   transparent 60%),
+    radial-gradient(ellipse 560px 420px at 97% 16%, rgba(107,30,43,.032), transparent 60%),
+    radial-gradient(ellipse 640px 460px at 90% 94%, rgba(20,57,46,.036),  transparent 58%),
+    radial-gradient(ellipse 520px 380px at 2% 90%,  rgba(204,85,0,.03), transparent 55%);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+a { color: var(--navy); }
+b, strong { font-weight: 700; }
+.sr-only { position: absolute; width:1px; height:1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; }
+
+:focus-visible {
+  outline: 2.5px solid var(--mustard);
+  outline-offset: 2px;
+  border-radius: 3px;
+}
+
+/* ────────────────────────────────────────────────────────────────
+   ROUTE NAV
+──────────────────────────────────────────────────────────────── */
+.site-nav {
+  position: sticky; top: 0; z-index: 30; background: rgba(255,255,255,.90); backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+}
+.site-nav-inner {
+  max-width: var(--maxw-wide); margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 24px; flex-wrap: wrap; gap: 14px;
+}
+.brand {
+  font-family: var(--font-display); font-weight: 600; font-size: 17px; color: var(--ink);
+  text-decoration: none; letter-spacing: -.01em; white-space: nowrap;
+}
+.brand .brand-dot { color: var(--mustard); }
+
+.route { display: flex; align-items: center; list-style: none; margin: 0; padding: 0; gap: 0; }
+.route-line { width: 22px; height: 1.5px; background: var(--line-strong); flex-shrink: 0; }
+.route li.route-item { display: flex; }
+.route-step {
+  display: flex; align-items: center; gap: 8px; background: none; border: none; cursor: pointer;
+  padding: 6px 10px; border-radius: 999px; font-family: var(--font-body); color: var(--ink-dim);
+}
+.route-step:hover { background: var(--paper-raised); }
+.route-num {
+  width: 22px; height: 22px; border-radius: 50%; border: 1.5px solid var(--line-strong);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display); font-weight: 600; font-size: 12px; color: var(--ink-dim); flex-shrink: 0;
+  background: var(--paper);
+}
+.route-label { font-weight: 600; font-size: 13.5px; }
+.route-step.active .route-num { color: #fff; border-color: transparent; }
+.route-step.active .route-label { color: var(--ink); }
+.route-step[data-page="primitives"].active .route-num { background: var(--navy); }
+.route-step[data-page="failure"].active .route-num { background: var(--maroon); }
+.route-step[data-page="success"].active .route-num { background: var(--bottle); }
+
+/* ────────────────────────────────────────────────────────────────
+   PAGE SHELL
+──────────────────────────────────────────────────────────────── */
+.page { display: none; }
+.page.visible { display: block; animation: fadein .35s ease; }
+@keyframes fadein { from { opacity: 0; } to { opacity: 1; } }
+
+.hero-band { padding: 68px 24px 48px; color: var(--ink); position: relative; overflow: hidden; border-bottom: 1px solid var(--line); }
+.hero-band .hero-motif { position: absolute; inset: 0; width: 100%; height: 100%; display: block; pointer-events: none; }
+.hero-band .hero-inner { max-width: var(--maxw); margin: 0 auto; position: relative; z-index: 1; }
+.hero-band.navy   { background: radial-gradient(ellipse 780px 480px at 100% 0%, rgba(27,42,74,.055), transparent 68%); }
+.hero-band.maroon { background: radial-gradient(ellipse 780px 480px at 100% 0%, rgba(107,30,43,.05), transparent 68%); }
+.hero-band.bottle { background: radial-gradient(ellipse 780px 480px at 100% 0%, rgba(20,57,46,.055), transparent 68%); }
+.hero-band.navy .eyebrow   { border-color: var(--navy);   color: var(--navy); }
+.hero-band.maroon .eyebrow { border-color: var(--maroon); color: var(--maroon); }
+.hero-band.bottle .eyebrow { border-color: var(--bottle); color: var(--bottle); }
+@media (max-width: 640px) { .hero-band .hero-motif { display: none; } }
+
+.page-inner { max-width: var(--maxw); margin: 0 auto; padding: 44px 24px 24px; }
+.page-inner.wide { max-width: var(--maxw-wide); }
+
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 6px; font-family: var(--font-body); font-weight: 700;
+  font-size: 12px; letter-spacing: .08em; text-transform: uppercase;
+  border: 1.5px solid var(--navy); color: var(--navy); padding: 5px 13px; border-radius: 999px; margin-bottom: 18px;
+}
+h1 { font-family: var(--font-display); font-weight: 600; font-size: clamp(30px,4.6vw,42px); margin: 0 0 14px; line-height: 1.14; letter-spacing: -.01em; }
+h2 {
+  font-family: var(--font-display); font-weight: 600; font-size: clamp(21px,3vw,25px); margin: 50px 0 14px; color: var(--ink);
+  display: flex; align-items: baseline; gap: 10px;
+}
+h3 { font-family: var(--font-display); font-weight: 600; font-size: 17.5px; margin: 26px 0 10px; color: var(--ink); }
+.subtitle { font-size: 17.5px; color: var(--ink-dim); max-width: 60ch; margin: 0; font-weight: 400; }
+p { margin: 0 0 14px; font-size: 15.8px; }
+.section-note { font-size: 13.5px; color: var(--ink-faint); }
+ul.plain, ol.plain { padding-left: 22px; margin: 0 0 14px; }
+ul.plain li, ol.plain li { margin-bottom: 6px; font-size: 15.8px; }
+
+hr.rule { border: none; border-top: 1.5px solid var(--line); margin: 46px 0 0; }
+
+/* pull-quote / emphasis line, used sparingly for the single strongest sentence in a section */
+.pull {
+  font-family: var(--font-display); font-style: italic; font-weight: 500;
+  font-size: clamp(19px, 2.6vw, 22px); line-height: 1.5; color: var(--ink);
+  padding: 4px 0 4px 22px; border-left: 3px solid var(--mustard); margin: 22px 0;
+}
+
+/* ────────────────────────────────────────────────────────────────
+   CALLOUT BLOCKS
+──────────────────────────────────────────────────────────────── */
+.block { background: var(--paper); border: 1px solid var(--line); border-top: 3px solid var(--line-strong); border-radius: var(--radius); padding: 24px 28px; margin: 24px 0; box-shadow: 0 4px 18px rgba(var(--shadow-rgb),.055); }
+.block > *:last-child { margin-bottom: 0; }
+.block.navy    { border-top-color: var(--navy); }
+.block.maroon  { border-top-color: var(--maroon); }
+.block.bottle  { border-top-color: var(--bottle); }
+.block.mustard { border-top-color: var(--mustard); }
+.block-label {
+  font-family: var(--font-body); font-weight: 800; font-size: 11px; letter-spacing: .09em; text-transform: uppercase;
+  margin-bottom: 10px; display: block;
+}
+.block.maroon .block-label { color: var(--maroon); }
+.block.bottle .block-label { color: var(--bottle); }
+.block.navy .block-label { color: var(--navy); }
+
+/* ────────────────────────────────────────────────────────────────
+   STATS
+──────────────────────────────────────────────────────────────── */
+.stat-row { display: flex; flex-wrap: wrap; gap: 10px; margin: 8px 0 20px; }
+.stat { flex: 1 1 108px; text-align: center; background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius-sm); padding: 15px 8px; box-shadow: 0 2px 10px rgba(var(--shadow-rgb),.045); }
+.stat .num { font-family: var(--font-display); font-weight: 700; font-size: 24px; color: var(--mustard-ink); }
+.stat .lbl { font-size: 11.5px; color: var(--ink-dim); text-transform: uppercase; letter-spacing: .03em; margin-top: 3px; }
+
+.verify-row { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; margin: 4px 0 22px; }
+.verify-row .verify-text { flex: 1 1 280px; font-size: 14.5px; color: var(--ink-dim); }
+.verify-row .verify-text strong { color: var(--ink); }
+
+/* ────────────────────────────────────────────────────────────────
+   BUTTONS
+──────────────────────────────────────────────────────────────── */
+.btn {
+  display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-display); font-weight: 600;
+  font-size: 14.5px; padding: 12px 22px; border-radius: 8px; border: 2px solid var(--navy);
+  background: var(--navy); color: #fff !important; text-decoration: none; cursor: pointer; line-height: 1.2;
+  box-shadow: 0 3px 12px rgba(27,42,74,.22);
+  transition: transform .15s ease, box-shadow .15s ease, background .15s ease, border-color .15s ease, color .15s ease;
+}
+.btn:hover { background: var(--maroon); border-color: var(--maroon); box-shadow: 0 5px 16px rgba(107,30,43,.26); transform: translateY(-1px); }
+.btn.ghost { background: transparent; color: var(--navy) !important; box-shadow: none; }
+.btn.ghost:hover { background: var(--navy); color: #fff !important; box-shadow: 0 5px 16px rgba(27,42,74,.24); transform: translateY(-1px); }
+.btn.on-dark { border-color: rgba(255,255,255,.7); background: transparent; color: #fff !important; }
+.btn.on-dark:hover { background: #fff; color: var(--bottle) !important; border-color: #fff; }
+.btn-row { display: flex; gap: 12px; flex-wrap: wrap; margin: 6px 0 4px; }
+
+/* ────────────────────────────────────────────────────────────────
+   TABLES
+──────────────────────────────────────────────────────────────── */
+.tbl-wrap { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: var(--radius); box-shadow: 0 3px 14px rgba(var(--shadow-rgb),.04); }
+table { border-collapse: collapse; width: 100%; font-size: 13.6px; }
+th, td { text-align: left; padding: 11px 13px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font-family: var(--font-display); font-weight: 600; background: var(--navy); color: #fff; font-size: 12.3px; text-transform: uppercase; letter-spacing: .03em; }
+tr:last-child td { border-bottom: none; }
+tr:nth-child(even) td { background: rgba(0,0,0,.012); }
+td:first-child, th:first-child { font-family: var(--font-mono); font-weight: 700; white-space: nowrap; }
+td:first-child { color: var(--navy); }
+
+/* ────────────────────────────────────────────────────────────────
+   CODE
+──────────────────────────────────────────────────────────────── */
+pre { background: var(--paper-raised); border: 1px solid var(--line); border-radius: var(--radius-sm); padding: 16px 18px; overflow-x: auto; font-family: var(--font-mono); font-size: 13px; color: var(--ink); }
+code { font-family: var(--font-mono); background: var(--paper-raised); border: 1px solid var(--line); padding: 1px 5px; border-radius: 3px; font-size: 13px; }
+
+/* ────────────────────────────────────────────────────────────────
+   PRIMITIVE CHIPS (X1–X6 / P1–P6 — one consistent color id throughout)
+──────────────────────────────────────────────────────────────── */
+.chip {
+  display: inline-flex; align-items: center; gap: 6px; font-family: var(--font-mono); font-weight: 700;
+  font-size: 12px; padding: 3px 9px; border-radius: 5px; color: #fff; white-space: nowrap; line-height: 1.6;
+}
+.chip-x1 { background: var(--x1); } .chip-x2 { background: var(--x2); } .chip-x3 { background: var(--x3); }
+.chip-x4 { background: var(--x4); } .chip-x5 { background: var(--x5); } .chip-x6 { background: var(--x6); }
+.dot { display:inline-block; width:9px; height:9px; border-radius:50%; flex-shrink:0; }
+.dot-x1{background:var(--x1)} .dot-x2{background:var(--x2)} .dot-x3{background:var(--x3)}
+.dot-x4{background:var(--x4)} .dot-x5{background:var(--x5)} .dot-x6{background:var(--x6)}
+
+/* ────────────────────────────────────────────────────────────────
+   DIAGRAM CARDS
+──────────────────────────────────────────────────────────────── */
+.diagram-card {
+  border: 1px solid var(--line); border-radius: var(--radius); background: var(--paper);
+  padding: 26px 22px 18px; margin: 22px 0; text-align: center;
+  box-shadow: 0 4px 20px rgba(var(--shadow-rgb),.05);
+}
+.diagram-card svg { max-width: 100%; height: auto; display: block; margin: 0 auto; }
+.diagram-caption { font-size: 13.5px; color: var(--ink-dim); margin-top: 12px; max-width: 52ch; margin-left: auto; margin-right: auto; }
+.diagram-caption b { color: var(--ink); }
+
+/* six-primitive legend grid (used under the cycle diagram) */
+.legend-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 22px; text-align: left; margin-top: 20px; }
+.legend-item { display: flex; gap: 10px; align-items: flex-start; font-size: 13.6px; }
+.legend-item .dot { margin-top: 5px; }
+.legend-item .lg-name { font-family: var(--font-display); font-weight: 600; font-size: 14px; color: var(--ink); display:block; }
+.legend-item .lg-desc { color: var(--ink-dim); }
+@media (max-width: 560px) { .legend-grid { grid-template-columns: 1fr; } }
+
+/* ────────────────────────────────────────────────────────────────
+   COMPARISON TABLE (journal vs. this work)
+──────────────────────────────────────────────────────────────── */
+.compare-wrap { overflow-x: auto; margin: 20px 0; border: 1px solid var(--line); border-radius: var(--radius); box-shadow: 0 3px 14px rgba(var(--shadow-rgb),.04); }
+table.compare { min-width: 560px; }
+table.compare th:first-child, table.compare td:first-child { font-family: var(--font-body); font-weight: 700; color: var(--ink-dim); font-size: 13px; white-space: normal; }
+table.compare th.col-journal { background: #666B75; color: #fff; }
+table.compare th.col-this { background: var(--mustard-ink); color: #fff; }
+table.compare td.col-journal { color: var(--ink-dim); }
+table.compare td.col-this { font-weight: 600; }
+
+/* ────────────────────────────────────────────────────────────────
+   DOMAIN TABS
+──────────────────────────────────────────────────────────────── */
+.domain-tabs { display: flex; gap: 8px; margin: 24px 0 6px; flex-wrap: wrap; }
+.domain-tabs button {
+  display: flex; align-items: center; gap: 8px;
+  font-family: var(--font-display); font-weight: 600; font-size: 14px; padding: 9px 18px 9px 14px;
+  border-radius: 8px; border: 1.5px solid var(--line); background: var(--paper); color: var(--ink-dim); cursor: pointer;
+}
+.domain-tabs button svg { width: 18px; height: 18px; flex-shrink: 0; }
+.domain-tabs button.active { border-color: var(--maroon); color: var(--maroon); border-width: 1.5px; background: #fbf1ee; box-shadow: 0 3px 10px rgba(var(--shadow-rgb),.05); }
+.domain-tabs button[data-domain="investment"].active { border-color: var(--navy); color: var(--navy); background: #eef1f7; }
+.domain-tabs button[data-domain="insurance"].active { border-color: var(--bottle); color: var(--bottle); background: #eaf1ee; }
+.domain-tabs button[data-domain="consulting"].active { border-color: var(--maroon); color: var(--maroon); background: #fbf1ee; }
+.domain-panel { display: none; }
+.domain-panel.visible { display: block; }
+
+/* domain icon badges used on page 3 success cards too */
+.domain-icon { width: 34px; height: 34px; flex-shrink: 0; display: inline-block; }
+.domain-icon svg { width: 100%; height: 100%; display: block; }
+
+/* ────────────────────────────────────────────────────────────────
+   TUPLE CARDS (page 2, the S/A/O/trans/obs/r breakdown)
+──────────────────────────────────────────────────────────────── */
+.tuple-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 16px 0 20px; }
+.tuple-card { border: 1px solid var(--line); background: var(--paper); border-radius: var(--radius-sm); padding: 14px 15px; box-shadow: 0 2px 10px rgba(var(--shadow-rgb),.045); }
+.tuple-card .tc-sym { font-family: var(--font-mono); font-weight: 700; font-size: 16px; color: var(--maroon); }
+.tuple-card .tc-def { font-size: 13.3px; color: var(--ink-dim); margin-top: 4px; }
+@media (max-width: 640px) { .tuple-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 400px) { .tuple-grid { grid-template-columns: 1fr; } }
+
+/* ────────────────────────────────────────────────────────────────
+   REPO PHASE CHART
+──────────────────────────────────────────────────────────────── */
+.phase-chart { margin: 18px 0 10px; }
+.phase-row { display: grid; grid-template-columns: 150px 1fr 74px; align-items: center; gap: 12px; margin-bottom: 9px; }
+.phase-row .pr-name { font-family: var(--font-mono); font-size: 12.6px; font-weight: 700; color: var(--ink); }
+.phase-row .pr-sub { display: block; font-family: var(--font-body); font-weight: 400; font-size: 11px; color: var(--ink-faint); margin-top: 1px; }
+.phase-track { background: var(--paper-sunken); border-radius: 5px; height: 20px; overflow: hidden; border: 1px solid var(--line); }
+.phase-fill { height: 100%; border-radius: 4px 0 0 4px; }
+.phase-fill.infra   { background: #8D93A0; }
+.phase-fill.part1   { background: var(--maroon); }
+.phase-fill.part2   { background: var(--navy); }
+.phase-fill.part3   { background: var(--bottle); }
+.phase-row .pr-lines { font-family: var(--font-mono); font-size: 12.6px; color: var(--ink-dim); text-align: right; }
+.chart-legend { display: flex; gap: 18px; flex-wrap: wrap; margin: 14px 0 4px; font-size: 12.5px; color: var(--ink-dim); }
+.chart-legend span { display: inline-flex; align-items: center; gap: 6px; }
+.chart-legend i { width: 11px; height: 11px; border-radius: 3px; display: inline-block; }
+@media (max-width: 560px) {
+  .phase-row { grid-template-columns: 100px 1fr 60px; }
+  .phase-row .pr-name { font-size: 11px; }
+}
+
+/* ────────────────────────────────────────────────────────────────
+   DOMAIN / SUCCESS CARDS (page 3)
+──────────────────────────────────────────────────────────────── */
+.card-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 18px 0; }
+.success-card { border: 1px solid var(--line); border-top: 3px solid var(--line-strong); border-radius: var(--radius); padding: 18px 18px 16px; background: var(--paper); box-shadow: 0 4px 18px rgba(var(--shadow-rgb),.05); }
+.success-card .sc-head { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+.success-card h4 { font-family: var(--font-display); font-size: 16px; font-weight: 600; margin: 0; }
+.success-card p { font-size: 13.8px; margin-bottom: 0; color: var(--ink-dim); }
+.success-card .sc-flag { margin-top: 12px; padding-top: 12px; border-top: 1px dashed var(--line-strong); display: flex; align-items: center; gap: 8px; font-size: 12.6px; color: var(--ink-dim); }
+@media (max-width: 760px) { .card-grid { grid-template-columns: 1fr; } }
+
+/* ────────────────────────────────────────────────────────────────
+   PAGE NAV ROW (prev/next)
+──────────────────────────────────────────────────────────────── */
+.page-nav-row { display: flex; justify-content: space-between; align-items: center; margin: 50px 0 6px; padding-top: 24px; border-top: 1.5px solid var(--line); gap: 12px; flex-wrap: wrap; }
+.page-nav-row .spacer { flex: 1; }
+.loop-back { font-size: 13px; color: var(--ink-faint); text-decoration: none; display:inline-flex; align-items:center; gap:6px; }
+.loop-back:hover { color: var(--ink-dim); }
+
+footer.site-foot { text-align: center; padding: 34px 24px 54px; font-size: 12.8px; color: var(--ink-dim); border-top: 1.5px solid var(--line); margin-top: 34px; }
+footer.site-foot a { font-weight: 600; }
+footer.site-foot .foot-links { margin-bottom: 8px; }
+footer.site-foot .foot-fine { color: var(--ink-faint); }
+
+@media (max-width: 600px) {
+  .site-nav-inner { padding: 10px 16px; }
+  .route-label { display: none; }
+  .route-step { padding: 6px 4px; }
+  .route-line { width: 12px; }
+  h1 { font-size: 28px; }
+  .page-inner { padding: 32px 18px 18px; }
+  .stat { flex: 1 1 88px; }
+}
+
+/* ────────────────────────────────────────────────────────────────
+   INDEPENDENCE GRID (30 ordered pairs)
+──────────────────────────────────────────────────────────────── */
+table.indep-grid { min-width: 480px; }
+table.indep-grid th, table.indep-grid td { text-align: center; padding: 9px 6px; font-family: var(--font-body); }
+table.indep-grid th:first-child { background: var(--paper-raised); border-bottom: 1px solid var(--line); }
+table.indep-grid td:first-child { background: var(--paper-raised); }
+table.indep-grid .cell-na { color: var(--ink-faint); font-family: var(--font-body); font-weight: 400; }
+table.indep-grid .cell-yes { color: #2F7A5E; font-weight: 800; font-size: 15px; }
+table.indep-grid .cell-star { color: var(--mustard-ink); font-weight: 800; font-size: 17px; }
+table.indep-grid caption { caption-side: bottom; text-align: left; font-size: 13px; color: var(--ink-dim); padding: 12px 4px 2px; font-family: var(--font-body); }
+
+/* verification seal */
+.verify-seal { flex-shrink: 0; width: 84px; height: 84px; }
+
+/* generic small-diagram legend row */
+
+/* icon utility */
+.icon-inline { width: 1em; height: 1em; vertical-align: -0.15em; display: inline-block; }
+
+/* ────────────────────────────────────────────────────────────────
+   LITERATURE REVIEW (bibliography-style reference list)
+──────────────────────────────────────────────────────────────── */
+.h3-icon { display: inline-flex; width: 19px; height: 19px; vertical-align: -4px; margin-right: 9px; flex-shrink: 0; }
+.h3-icon svg { width: 100%; height: 100%; display: block; }
+.lit-lede { font-style: italic; color: var(--ink-dim); font-size: 14px; margin: 2px 0 14px; }
+.ref-list { list-style: none; margin: 0 0 8px; padding: 0; }
+.ref-item { font-size: 13.8px; color: var(--ink-dim); line-height: 1.65; margin-bottom: 14px; padding-left: 25px; text-indent: -25px; }
+.ref-item .ref-au { color: var(--ink); font-weight: 600; }
+.ref-item i { font-style: italic; color: var(--ink); }
+.ref-item a { color: var(--navy); }
+.ref-note { color: var(--ink-faint); }
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="site-nav-inner">
+    <a class="brand" href="#primitives" onclick="showPage('primitives');return false;">Ismail's Primitives</a>
+    <ol class="route" role="tablist" aria-label="Site sections">
+      <li class="route-item"><button class="route-step" data-page="primitives" onclick="showPage('primitives')" role="tab"><span class="route-num">1</span><span class="route-label">Primitives</span></button></li>
+      <li class="route-line" aria-hidden="true"></li>
+      <li class="route-item"><button class="route-step" data-page="failure" onclick="showPage('failure')" role="tab"><span class="route-num">2</span><span class="route-label">Nature of Failure</span></button></li>
+      <li class="route-line" aria-hidden="true"></li>
+      <li class="route-item"><button class="route-step" data-page="success" onclick="showPage('success')" role="tab"><span class="route-num">3</span><span class="route-label">Route to Success</span></button></li>
+    </ol>
+  </div>
+</nav>
+
+<section id="page-primitives" class="page">
+  <div class="hero-band navy">
+    <svg class="hero-motif" viewBox="0 0 1200 400" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <g fill="none" stroke="#1B2A4A" stroke-width="2.2">
+        <path d="M940,80 L1046,142 L1046,262 L940,322 L834,262 L834,142 Z"/>
+        <path d="M940,80 L940,22"/>
+        <path d="M1046,142 L1118,108"/>
+        <path d="M1046,262 L1126,288"/>
+        <path d="M834,262 L758,302"/>
+        <path d="M834,142 L752,118"/>
+      </g>
+      <g fill="#1B2A4A">
+        <circle cx="940" cy="80" r="8"/>
+        <circle cx="1046" cy="142" r="8"/>
+        <circle cx="1046" cy="262" r="8"/>
+        <circle cx="940" cy="322" r="8"/>
+        <circle cx="834" cy="262" r="8"/>
+        <circle cx="834" cy="142" r="8"/>
+        <circle cx="940" cy="22" r="5"/>
+        <circle cx="1118" cy="108" r="5"/>
+        <circle cx="1126" cy="288" r="5"/>
+        <circle cx="758" cy="302" r="5"/>
+        <circle cx="752" cy="118" r="5"/>
+      </g>
+    </svg>
+    <div class="hero-inner">
+    <span class="eyebrow">A Unified Functional Theory for Any Decision Maker</span>
+    <h1>Ismail's Primitives</h1>
+    <p class="subtitle">Every sequential decision under uncertainty — an investment, a consultancy engagement, an insurance contract, a machine-learning agent — faces the same six structural failures. This work proves which primitives are required to avoid them, shows exactly where each domain fails without them, and points toward what building real success on top of that floor requires.</p>
+  </div></div>
+
+  <div class="page-inner">
+
+    <h2>What's proven</h2>
+    <p>Six primitives, each shown necessary in its own minimal environment. All thirty ordered pairs shown mutually irreplaceable. A verified logical scaffold connecting all six into a cycle — stated plainly where that scaffold is complete and where it still requires domain-specific work.</p>
+
+    <div class="diagram-card">
+      <svg viewBox="0 0 780 150" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Three boxes in sequence: Necessity, Part I, each primitive required alone; Independence, Part II, none substitutes for another; Sequential Dependence, Part III, verified scaffold of six links">
+        <defs><marker id="arrowProven" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#8A8F7E"/></marker></defs>
+        <line x1="240" y1="70" x2="273" y2="70" stroke="#8A8F7E" stroke-width="2" marker-end="url(#arrowProven)"/>
+        <line x1="502" y1="70" x2="535" y2="70" stroke="#8A8F7E" stroke-width="2" marker-end="url(#arrowProven)"/>
+
+        <rect x="15" y="10" width="225" height="120" rx="12" fill="none" stroke="#6B1E2B" stroke-width="2"/>
+        <text x="127.5" y="50" text-anchor="middle" font-family="Fraunces,serif" font-weight="600" font-size="17" fill="#6B1E2B">Necessity</text>
+        <text x="127.5" y="71" text-anchor="middle" font-family="Figtree,sans-serif" font-size="11.5" fill="#4D5566">Part I</text>
+        <text x="127.5" y="97" text-anchor="middle" font-family="Figtree,sans-serif" font-size="11" fill="#4D5566">each primitive</text>
+        <text x="127.5" y="112" text-anchor="middle" font-family="Figtree,sans-serif" font-size="11" fill="#4D5566">required, alone</text>
+
+        <rect x="277" y="10" width="225" height="120" rx="12" fill="none" stroke="#1B2A4A" stroke-width="2"/>
+        <text x="389.5" y="50" text-anchor="middle" font-family="Fraunces,serif" font-weight="600" font-size="17" fill="#1B2A4A">Independence</text>
+        <text x="389.5" y="71" text-anchor="middle" font-family="Figtree,sans-serif" font-size="11.5" fill="#4D5566">Part II</text>
+        <text x="389.5" y="97" text-anchor="middle" font-family="Figtree,sans-serif" font-size="11" fill="#4D5566">none substitutes</text>
+        <text x="389.5" y="112" text-anchor="middle" font-family="Figtree,sans-serif" font-size="11" fill="#4D5566">for another</text>
+
+        <rect x="539" y="10" width="225" height="120" rx="12" fill="none" stroke="#14392E" stroke-width="2"/>
+        <text x="651.5" y="42" text-anchor="middle" font-family="Fraunces,serif" font-weight="600" font-size="17" fill="#14392E">Sequential</text>
+        <text x="651.5" y="63" text-anchor="middle" font-family="Fraunces,serif" font-weight="600" font-size="17" fill="#14392E">Dependence</text>
+        <text x="651.5" y="84" text-anchor="middle" font-family="Figtree,sans-serif" font-size="11.5" fill="#4D5566">Part III</text>
+        <text x="651.5" y="108" text-anchor="middle" font-family="Figtree,sans-serif" font-size="11" fill="#4D5566">verified scaffold, six links</text>
+      </svg>
+      <div class="diagram-caption">The proof's own architecture, left to right: each primitive stands on its own (Part I), none of the six can cover for another (Part II), and the six link into a single forward scaffold (Part III) — diagrammed below.</div>
+    </div>
+
+    <div class="diagram-card">
+      <svg viewBox="49 9 342 382" style="max-width:400px" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The six primitives X1 through X6 arranged in a hexagon, connected in a directed cycle from X1 to X2 to X3 to X4 to X5 to X6 and back to X1">
+        <defs>
+          <marker id="arrowHex" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M0,0 L10,5 L0,10 z" fill="#B7AF98"/>
+          </marker>
+        </defs>
+        <path d="M 246.8 65.5 Q 269.3 111.5 319.6 107.5" fill="none" stroke="#B7AF98" stroke-width="2" marker-end="url(#arrowHex)"/>
+        <path d="M 349.9 156.0 Q 321.3 198.4 349.9 240.0" fill="none" stroke="#B7AF98" stroke-width="2" marker-end="url(#arrowHex)"/>
+        <path d="M 323.1 290.5 Q 272.0 287.0 250.3 332.5" fill="none" stroke="#B7AF98" stroke-width="2" marker-end="url(#arrowHex)"/>
+        <path d="M 193.2 334.5 Q 170.7 288.5 120.4 292.5" fill="none" stroke="#B7AF98" stroke-width="2" marker-end="url(#arrowHex)"/>
+        <path d="M 90.1 244.0 Q 118.7 201.6 90.1 160.0" fill="none" stroke="#B7AF98" stroke-width="2" marker-end="url(#arrowHex)"/>
+        <path d="M 116.9 109.5 Q 168.0 113.0 189.7 67.5" fill="none" stroke="#B7AF98" stroke-width="2" marker-end="url(#arrowHex)"/>
+
+        <g><circle cx="220.0" cy="50.0" r="27" fill="none" stroke="#3B5BA5" stroke-width="2.8"/><text x="220.0" y="50.0" text-anchor="middle" dominant-baseline="central" font-family="ui-monospace,monospace" font-weight="700" font-size="14" fill="#3B5BA5">X1</text></g>
+        <g><circle cx="349.9" cy="125.0" r="27" fill="none" stroke="#A5333B" stroke-width="2.8"/><text x="349.9" y="125.0" text-anchor="middle" dominant-baseline="central" font-family="ui-monospace,monospace" font-weight="700" font-size="14" fill="#A5333B">X2</text></g>
+        <g><circle cx="349.9" cy="275.0" r="27" fill="none" stroke="#2F7A5E" stroke-width="2.8"/><text x="349.9" y="275.0" text-anchor="middle" dominant-baseline="central" font-family="ui-monospace,monospace" font-weight="700" font-size="14" fill="#2F7A5E">X3</text></g>
+        <g><circle cx="220.0" cy="350.0" r="27" fill="none" stroke="#B9861E" stroke-width="2.8"/><text x="220.0" y="350.0" text-anchor="middle" dominant-baseline="central" font-family="ui-monospace,monospace" font-weight="700" font-size="14" fill="#B9861E">X4</text></g>
+        <g><circle cx="90.1" cy="275.0" r="27" fill="none" stroke="#6B4C8A" stroke-width="2.8"/><text x="90.1" y="275.0" text-anchor="middle" dominant-baseline="central" font-family="ui-monospace,monospace" font-weight="700" font-size="14" fill="#6B4C8A">X5</text></g>
+        <g><circle cx="90.1" cy="125.0" r="27" fill="none" stroke="#46707A" stroke-width="2.8"/><text x="90.1" y="125.0" text-anchor="middle" dominant-baseline="central" font-family="ui-monospace,monospace" font-weight="700" font-size="14" fill="#46707A">X6</text></g>
+      </svg>
+      <div class="diagram-caption"><b>The six primitives, closing into a verified cycle.</b> Necessity (Part I) and mutual independence (Part II) hold for each on its own; this cycle is Part III's scaffold for how possessing one primitive creates exactly the conditions needed to benefit from the next.</div>
+      <div class="legend-grid">
+        <div class="legend-item"><span class="dot dot-x1"></span><span><span class="lg-name">X1 · Objective Tracking</span><span class="lg-desc">Tell two live hypotheses apart before acting on either.</span></span></div>
+        <div class="legend-item"><span class="dot dot-x2"></span><span><span class="lg-name">X2 · Cross-Context Safety Transfer</span><span class="lg-desc">Recognize the action that can't be undone, and don't take it.</span></span></div>
+        <div class="legend-item"><span class="dot dot-x3"></span><span><span class="lg-name">X3 · Global Attractor Exploration</span><span class="lg-desc">Keep probing past the comfortable, safe plateau.</span></span></div>
+        <div class="legend-item"><span class="dot dot-x4"></span><span><span class="lg-name">X4 · Policy Simplification</span><span class="lg-desc">Commit decisively once the evidence is in.</span></span></div>
+        <div class="legend-item"><span class="dot dot-x5"></span><span><span class="lg-name">X5 · Feasibility Projection</span><span class="lg-desc">Treat a hard limit as a wall, never a trade-off.</span></span></div>
+        <div class="legend-item"><span class="dot dot-x6"></span><span><span class="lg-name">X6 · Feedback Adaptation</span><span class="lg-desc">Discard a belief once the world it described has changed.</span></span></div>
+      </div>
+    </div>
+
+    <div class="diagram-card">
+      <div class="tbl-wrap">
+        <table class="indep-grid">
+          <tr><th></th><th><span class="chip chip-x1">X1</span></th><th><span class="chip chip-x2">X2</span></th><th><span class="chip chip-x3">X3</span></th><th><span class="chip chip-x4">X4</span></th><th><span class="chip chip-x5">X5</span></th><th><span class="chip chip-x6">X6</span></th></tr>
+          <tr><td><span class="chip chip-x1">X1</span></td><td class="cell-na">—</td><td class="cell-yes">✓</td><td class="cell-yes">✓</td><td class="cell-yes">✓</td><td class="cell-yes">✓</td><td class="cell-yes">✓</td></tr>
+          <tr><td><span class="chip chip-x2">X2</span></td><td class="cell-yes">✓</td><td class="cell-na">—</td><td class="cell-yes">✓</td><td class="cell-yes">✓</td><td class="cell-yes">✓</td><td class="cell-yes">✓</td></tr>
+          <tr><td><span class="chip chip-x3">X3</span></td><td class="cell-yes">✓</td><td class="cell-yes">✓</td><td class="cell-na">—</td><td class="cell-yes">✓</td><td class="cell-yes">✓</td><td class="cell-yes">✓</td></tr>
+          <tr><td><span class="chip chip-x4">X4</span></td><td class="cell-yes">✓</td><td class="cell-yes">✓</td><td class="cell-yes">✓</td><td class="cell-na">—</td><td class="cell-yes">✓</td><td class="cell-yes">✓</td></tr>
+          <tr><td><span class="chip chip-x5">X5</span></td><td class="cell-yes">✓</td><td class="cell-yes">✓</td><td class="cell-yes">✓</td><td class="cell-yes">✓</td><td class="cell-na">—</td><td class="cell-yes">✓</td></tr>
+          <tr><td><span class="chip chip-x6">X6</span></td><td class="cell-yes">✓</td><td class="cell-yes">✓</td><td class="cell-yes">✓</td><td class="cell-yes">✓</td><td class="cell-yes">✓</td><td class="cell-na">—</td></tr>
+        </table>
+      </div>
+      <div class="diagram-caption"><b>All thirty ordered pairs, proven irreplaceable.</b> Rows are a primitive's home turf; columns are an algorithm built for a different primitive, redeployed there — and shown to fail. The six diagonal cells are excluded on purpose: a primitive is never tested against itself.</div>
+    </div>
+
+    <h2>Checked by a machine, not a reviewer</h2>
+    <div class="verify-row">
+      <svg class="verify-seal" viewBox="0 0 84 84" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Verification seal">
+        <circle cx="42" cy="42" r="33" fill="none" stroke="#CC5500" stroke-width="1.6"/>
+        <line x1="75.0" y1="42.0" x2="81.0" y2="42.0" stroke="#CC5500" stroke-width="1.6"/><line x1="74.2" y1="49.3" x2="80.0" y2="50.7" stroke="#CC5500" stroke-width="1.6"/><line x1="71.7" y1="56.3" x2="77.1" y2="58.9" stroke="#CC5500" stroke-width="1.6"/><line x1="67.8" y1="62.6" x2="72.5" y2="66.3" stroke="#CC5500" stroke-width="1.6"/><line x1="62.6" y1="67.8" x2="66.3" y2="72.5" stroke="#CC5500" stroke-width="1.6"/><line x1="56.3" y1="71.7" x2="58.9" y2="77.1" stroke="#CC5500" stroke-width="1.6"/><line x1="49.3" y1="74.2" x2="50.7" y2="80.0" stroke="#CC5500" stroke-width="1.6"/><line x1="42.0" y1="75.0" x2="42.0" y2="81.0" stroke="#CC5500" stroke-width="1.6"/><line x1="34.7" y1="74.2" x2="33.3" y2="80.0" stroke="#CC5500" stroke-width="1.6"/><line x1="27.7" y1="71.7" x2="25.1" y2="77.1" stroke="#CC5500" stroke-width="1.6"/><line x1="21.4" y1="67.8" x2="17.7" y2="72.5" stroke="#CC5500" stroke-width="1.6"/><line x1="16.2" y1="62.6" x2="11.5" y2="66.3" stroke="#CC5500" stroke-width="1.6"/><line x1="12.3" y1="56.3" x2="6.9" y2="58.9" stroke="#CC5500" stroke-width="1.6"/><line x1="9.8" y1="49.3" x2="4.0" y2="50.7" stroke="#CC5500" stroke-width="1.6"/><line x1="9.0" y1="42.0" x2="3.0" y2="42.0" stroke="#CC5500" stroke-width="1.6"/><line x1="9.8" y1="34.7" x2="4.0" y2="33.3" stroke="#CC5500" stroke-width="1.6"/><line x1="12.3" y1="27.7" x2="6.9" y2="25.1" stroke="#CC5500" stroke-width="1.6"/><line x1="16.2" y1="21.4" x2="11.5" y2="17.7" stroke="#CC5500" stroke-width="1.6"/><line x1="21.4" y1="16.2" x2="17.7" y2="11.5" stroke="#CC5500" stroke-width="1.6"/><line x1="27.7" y1="12.3" x2="25.1" y2="6.9" stroke="#CC5500" stroke-width="1.6"/><line x1="34.7" y1="9.8" x2="33.3" y2="4.0" stroke="#CC5500" stroke-width="1.6"/><line x1="42.0" y1="9.0" x2="42.0" y2="3.0" stroke="#CC5500" stroke-width="1.6"/><line x1="49.3" y1="9.8" x2="50.7" y2="4.0" stroke="#CC5500" stroke-width="1.6"/><line x1="56.3" y1="12.3" x2="58.9" y2="6.9" stroke="#CC5500" stroke-width="1.6"/><line x1="62.6" y1="16.2" x2="66.3" y2="11.5" stroke="#CC5500" stroke-width="1.6"/><line x1="67.8" y1="21.4" x2="72.5" y2="17.7" stroke="#CC5500" stroke-width="1.6"/><line x1="71.7" y1="27.7" x2="77.1" y2="25.1" stroke="#CC5500" stroke-width="1.6"/><line x1="74.2" y1="34.7" x2="80.0" y2="33.3" stroke="#CC5500" stroke-width="1.6"/>
+        <circle cx="42" cy="42" r="26" fill="#1B2A4A"/>
+        <path d="M30 43 L38 51 L55 32" fill="none" stroke="#fff" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <p class="verify-text">Every claim here is checked by a computer that accepts nothing on reputation — <strong>Lean 4</strong>, verified against <strong>Mathlib</strong>. Nothing is asserted here; everything is checked.</p>
+    </div>
+
+    <div class="diagram-card">
+      <svg viewBox="0 0 780 110" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Four steps in sequence: Definition, stated in Lean; Theorem, proved in Lean; Kernel check, no human in the loop; Accepted">
+        <defs><marker id="arrowPipe" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#8A8F7E"/></marker></defs>
+        <line x1="180" y1="50" x2="198" y2="50" stroke="#8A8F7E" stroke-width="2" marker-end="url(#arrowPipe)"/>
+        <line x1="370" y1="50" x2="388" y2="50" stroke="#8A8F7E" stroke-width="2" marker-end="url(#arrowPipe)"/>
+        <line x1="560" y1="50" x2="578" y2="50" stroke="#8A8F7E" stroke-width="2" marker-end="url(#arrowPipe)"/>
+
+        <rect x="10" y="10" width="170" height="80" rx="10" fill="none" stroke="#1B2A4A" stroke-width="1.6"/>
+        <text x="95" y="47" text-anchor="middle" font-family="Fraunces,serif" font-weight="600" font-size="15" fill="#1B2A4A">Definition</text>
+        <text x="95" y="66" text-anchor="middle" font-family="Figtree,sans-serif" font-size="11" fill="#4D5566">stated in Lean</text>
+
+        <rect x="200" y="10" width="170" height="80" rx="10" fill="none" stroke="#1B2A4A" stroke-width="1.6"/>
+        <text x="285" y="47" text-anchor="middle" font-family="Fraunces,serif" font-weight="600" font-size="15" fill="#1B2A4A">Theorem</text>
+        <text x="285" y="66" text-anchor="middle" font-family="Figtree,sans-serif" font-size="11" fill="#4D5566">proved in Lean</text>
+
+        <rect x="390" y="10" width="170" height="80" rx="10" fill="none" stroke="#1B2A4A" stroke-width="1.6"/>
+        <text x="475" y="47" text-anchor="middle" font-family="Fraunces,serif" font-weight="600" font-size="15" fill="#1B2A4A">Kernel check</text>
+        <text x="475" y="66" text-anchor="middle" font-family="Figtree,sans-serif" font-size="11" fill="#4D5566">no human in the loop</text>
+
+        <rect x="580" y="10" width="190" height="80" rx="10" fill="none" stroke="#14392E" stroke-width="2.5"/>
+        <text x="675" y="47" text-anchor="middle" font-family="Fraunces,serif" font-weight="700" font-size="16" fill="#14392E">Accepted</text>
+        <text x="675" y="70" text-anchor="middle" font-family="Figtree,sans-serif" font-weight="700" font-size="17" fill="#14392E">&#10003;</text>
+      </svg>
+      <div class="diagram-caption">The same four-step pipeline runs for every one of the ~12,700 lines: nothing is accepted until the kernel — not a person — checks it.</div>
+    </div>
+
+    <div class="stat-row">
+      <div class="stat"><div class="num">~12,700</div><div class="lbl">Lines of Lean</div></div>
+      <div class="stat"><div class="num">0</div><div class="lbl">sorry</div></div>
+      <div class="stat"><div class="num">0</div><div class="lbl">axiom</div></div>
+      <div class="stat"><div class="num">0</div><div class="lbl">opaque</div></div>
+      <div class="stat"><div class="num">0</div><div class="lbl">Linter suppressions</div></div>
+    </div>
+    <div class="btn-row">
+      <a class="btn ghost" href="https://github.com/M-Ismail-ZA/IsmailsPrimitives" target="_blank" rel="noopener">Repository ↗</a>
+      <a class="btn ghost" href="https://doi.org/10.5281/zenodo.21177368" target="_blank" rel="noopener">Paper, DOI 10.5281/zenodo.21177368 ↗</a>
+    </div>
+
+    <h2>Why open, not journal-locked</h2>
+    <p>Peer review checks three things: novelty, significance, and rigor. Novelty and significance are judgment calls — this work makes its own case for both, openly, for anyone to weigh directly. Rigor is the one thing review is supposed to guarantee, and for a machine-checked proof, rigor stops being a judgment call: Lean's kernel either accepts a proof or it doesn't, and no reviewer's opinion changes that answer.</p>
+    <p>What's left, once a kernel rather than a referee settles rigor, is comparison rather than judgment:</p>
+
+    <div class="compare-wrap">
+      <table class="compare">
+        <tr><th></th><th class="col-journal">Traditional journal</th><th class="col-this">This work</th></tr>
+        <tr><td>Rigor is guaranteed by</td><td class="col-journal">A reviewer's judgment call</td><td class="col-this">Lean's kernel — accepts or rejects, nothing in between</td></tr>
+        <tr><td>Your confidence rests on</td><td class="col-journal">The journal's reputation, not the work itself</td><td class="col-this">The proof itself, checked on your own machine</td></tr>
+        <tr><td>Citation &amp; formatting</td><td class="col-journal">Additional, journal-specific requirements layered on top</td><td class="col-this">Cite the DOI directly — nothing else required</td></tr>
+        <tr><td>Permanence</td><td class="col-journal">Tied to that journal continuing to exist and to publish it</td><td class="col-this">Zenodo, backed by CERN, built for perpetuity</td></tr>
+        <tr><td>Access</td><td class="col-journal">Often paywalled, or embargoed pending review</td><td class="col-this">Open now, CC BY 4.0</td></tr>
+        <tr><td>Timeline</td><td class="col-journal">A publication cycle — commonly a year or more</td><td class="col-this">Already timestamped, today</td></tr>
+      </table>
+    </div>
+
+    <p>A DOI on Zenodo timestamps this publicly and permanently, independent of any journal. Zenodo is backed by CERN and built for perpetuity: the DOI resolves today and will keep resolving. There is no scenario in which the rights are revoked or the work quietly moves behind a paywall — the permanence is structural, not a policy that could change. If an academic at an affiliated institution publishes the same result tomorrow, the DOI already exists — citing it isn't a courtesy, it's what the academy's own norms already require.</p>
+    <p>This is published under <strong>CC BY 4.0</strong> — free to use, cite, and build on, attribution the only requirement. A firm without journal access or academic affiliation should not be the last to find out that a fixed, provable standard already exists. Waiting for a traditional publication cycle to run its course only hands the advantage to whichever competitor reads this page first.</p>
+
+    <h2>What's in the repository</h2>
+    <p>Everything above is verifiable in one place, not taken on this site's word. The repository holds the complete Lean 4 formalization — seven files, organized in phases, each importing only the phases that came before it, so every definition you meet has already been introduced.</p>
+
+    <div class="diagram-card" style="text-align:left;">
+      <h3 style="margin-top:0;">The proof, phase by phase</h3>
+      <div class="phase-chart">
+        <div class="phase-row"><div class="pr-name">Phase0<span class="pr-sub">Framework types — Env, Algorithm, the six primitive predicates</span></div><div class="phase-track"><div class="phase-fill infra" style="width:5.3%"></div></div><div class="pr-lines">259</div></div>
+        <div class="phase-row"><div class="pr-name">Phase1<span class="pr-sub">Supporting lemmas — probability, analysis</span></div><div class="phase-track"><div class="phase-fill infra" style="width:33.1%"></div></div><div class="pr-lines">1,603</div></div>
+        <div class="phase-row"><div class="pr-name">Phase2<span class="pr-sub">Trajectory measure &amp; environments</span></div><div class="phase-track"><div class="phase-fill infra" style="width:100%"></div></div><div class="pr-lines">4,842</div></div>
+        <div class="phase-row"><div class="pr-name">Phase2CMI<span class="pr-sub">Conditional mutual information</span></div><div class="phase-track"><div class="phase-fill infra" style="width:21.3%"></div></div><div class="pr-lines">1,029</div></div>
+        <div class="phase-row"><div class="pr-name">Phase3<span class="pr-sub">Necessity of each primitive</span></div><div class="phase-track"><div class="phase-fill part1" style="width:53.7%"></div></div><div class="pr-lines">2,600</div></div>
+        <div class="phase-row"><div class="pr-name">Phase4<span class="pr-sub">Mutual independence, all thirty pairs</span></div><div class="phase-track"><div class="phase-fill part2" style="width:31.7%"></div></div><div class="pr-lines">1,534</div></div>
+        <div class="phase-row"><div class="pr-name">Phase5<span class="pr-sub">Sequential dependence &amp; martingale convergence</span></div><div class="phase-track"><div class="phase-fill part3" style="width:16.5%"></div></div><div class="pr-lines">800</div></div>
+      </div>
+      <div class="chart-legend">
+        <span><i style="background:#8D93A0"></i>Framework &amp; infrastructure</span>
+        <span><i style="background:var(--maroon)"></i>Part I — Necessity</span>
+        <span><i style="background:var(--navy)"></i>Part II — Independence</span>
+        <span><i style="background:var(--bottle)"></i>Part III — Sequential dependence</span>
+      </div>
+      <p class="section-note" style="margin-top:14px; margin-bottom:0;">Dependency order: Phase0 → Phase1 → Phase2 → Phase2CMI → Phase3 → Phase4 → Phase5. ~12,700 lines total, built from nothing but Mathlib's own axioms.</p>
+    </div>
+
+    <div class="diagram-card" style="text-align:left;">
+      <h3 style="margin-top:0;">Where it lives</h3>
+      <pre>IsmailsPrimitives/
+├── SixPrimitives.lean
+├── SixPrimitives/
+│   ├── Phase0.lean      (framework types)
+│   ├── Phase1.lean      (supporting lemmas)
+│   ├── Phase2.lean      (trajectory measure &amp; environments)
+│   ├── Phase2CMI.lean   (conditional mutual information)
+│   ├── Phase3.lean      (Part I — necessity)
+│   ├── Phase4.lean      (Part II — independence)
+│   └── Phase5.lean      (Part III — sequential dependence)
+├── paper/
+│   ├── PAPER.md
+│   └── Ismails_Primitives.pdf
+├── lakefile.lean, lake-manifest.json, lean-toolchain
+└── README.md</pre>
+    </div>
+
+    <p>Alongside the proofs: the paper itself, as a Markdown edition readable directly on GitHub and as a full PDF carrying both appendices omitted from the web edition — a line-by-line table mapping every definition and theorem to its exact Lean identifier, and the proofs verifying that every environment used in Part I actually exhibits the structural property it's claimed to witness. Also included: the exact <code>lakefile</code>, dependency manifest, and Lean toolchain version that reproduce this from a clean clone in a few minutes, and the GitHub Actions workflow that rebuilds and checks the whole thing on every commit — so the green build badge is never more than one push out of date.</p>
+    <p class="section-note">The Lean code is released under the MIT License. The paper is CC BY 4.0. Either way: use it, cite it, build on it.</p>
+
+    <div class="btn-row" style="margin-top:8px;">
+      <a class="btn" href="https://github.com/M-Ismail-ZA/IsmailsPrimitives" target="_blank" rel="noopener">Explore the repository ↗</a>
+    </div>
+
+    <div class="page-nav-row">
+      <span class="spacer"></span>
+      <button class="btn ghost" onclick="showPage('failure')">The Nature of Failure →</button>
+    </div>
+  </div>
+</section>
+
+<section id="page-failure" class="page">
+  <div class="hero-band maroon">
+    <svg class="hero-motif" viewBox="0 0 1200 400" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <g fill="none" stroke="#6B1E2B" stroke-width="2.2">
+        <path d="M820,344 L918,258"/>
+        <path d="M918,258 L882,148"/>
+        <path d="M918,258 L1004,192"/>
+        <path d="M820,344 L946,300"/>
+        <path d="M946,300 L1042,234"/>
+        <path d="M946,300 L1082,332"/>
+      </g>
+      <g fill="#6B1E2B">
+        <circle cx="820" cy="344" r="8"/>
+        <circle cx="918" cy="258" r="7"/>
+        <circle cx="946" cy="300" r="7"/>
+        <circle cx="882" cy="148" r="5"/>
+        <circle cx="1004" cy="192" r="5"/>
+        <circle cx="1042" cy="234" r="5"/>
+        <circle cx="1082" cy="332" r="5"/>
+      </g>
+    </svg>
+    <div class="hero-inner">
+    <span class="eyebrow">Necessity, Made Concrete</span>
+    <h1>The Nature of Failure</h1>
+    <p class="subtitle">Any decision field that acts under uncertainty, with actions and consequences, can be formalized the same way — and once it is, the same six requirements apply, provably, regardless of what the field calls itself.</p>
+  </div></div>
+
+  <div class="page-inner">
+
+    <h2>What a POMDP is</h2>
+    <p>A POMDP (Partially Observable Markov Decision Process) has four ingredients: a <b>hidden state</b> (the true situation, unseen), <b>actions</b> (the choices available), <b>observations</b> (noisy, partial signals about the hidden state — all the decision-maker actually gets), and <b>rewards</b> (the consequence of an action in a given state). The defining feature is the gap between state and observation — exactly where several of the six structural failures live.</p>
+
+    <div class="diagram-card">
+      <svg viewBox="0 0 700 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram of the agent-environment loop: the agent chooses an action from A; the environment, containing the hidden state S, returns an observation from O and a reward r">
+        <defs>
+          <marker id="arrowPomdpFwd" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#6B1E2B"/></marker>
+          <marker id="arrowPomdpBack" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1B2A4A"/></marker>
+        </defs>
+        <path d="M 230 135 Q 350 55 470 135" fill="none" stroke="#6B1E2B" stroke-width="2.3" marker-end="url(#arrowPomdpFwd)"/>
+        <text x="350" y="66" text-anchor="middle" font-family="ui-monospace,monospace" font-size="13.5" font-weight="600" fill="#6B1E2B">action a &#8712; A</text>
+        <path d="M 470 175 Q 350 255 230 175" fill="none" stroke="#1B2A4A" stroke-width="2.3" marker-end="url(#arrowPomdpBack)"/>
+        <text x="350" y="250" text-anchor="middle" font-family="ui-monospace,monospace" font-size="13.5" font-weight="600" fill="#1B2A4A">observation o &#8712; O, reward r</text>
+        <rect x="40" y="90" width="190" height="120" rx="14" fill="none" stroke="#1B2A4A" stroke-width="2"/>
+        <text x="135" y="122" text-anchor="middle" font-family="Fraunces,serif" font-weight="600" font-size="16" fill="#1B2A4A">AGENT</text>
+        <text x="135" y="152" text-anchor="middle" font-family="Figtree,sans-serif" font-size="12.5" fill="#4D5566">chooses a &#8712; A</text>
+        <text x="135" y="172" text-anchor="middle" font-family="Figtree,sans-serif" font-size="12.5" fill="#4D5566">from its policy</text>
+        <rect x="470" y="90" width="190" height="120" rx="14" fill="none" stroke="#6B1E2B" stroke-width="2"/>
+        <text x="565" y="118" text-anchor="middle" font-family="Fraunces,serif" font-weight="600" font-size="16" fill="#6B1E2B">ENVIRONMENT</text>
+        <rect x="500" y="132" width="130" height="32" rx="6" fill="none" stroke="#8A8F7E" stroke-width="1.7" stroke-dasharray="5 4"/>
+        <text x="565" y="152" text-anchor="middle" font-family="Figtree,sans-serif" font-weight="600" font-size="11.5" fill="#4D5566">S — hidden state</text>
+        <text x="565" y="189" text-anchor="middle" font-family="Figtree,sans-serif" font-size="12" fill="#4D5566">via trans, obs, r</text>
+      </svg>
+      <div class="diagram-caption">The agent never sees <b>S</b> directly — only the noisy, partial <b>O</b> the environment returns. Several of the six structural failures live exactly in that gap.</div>
+    </div>
+
+    <p><b>Why nothing else is more comprehensive:</b> every simpler alternative is this structure with a piece deleted, not a rival to it. Remove the hidden/observed gap and you get an ordinary MDP — which can't even express reward ambiguity, since that requires a hidden parameter learned only through noisy signals. Remove the actions and reward and you get a Hidden Markov Model — a description, not a decision framework. Collapse the state dynamics to nothing and you get a multi-armed bandit. Add a second strategic agent and you get a game — more machinery than a single decision-maker's claim needs. Nothing adds expressive power beyond this structure for this problem; everything else subtracts from it.</p>
+
+    <div class="diagram-card">
+      <svg viewBox="-2 30 764 506" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A central POMDP box, the general case, with four arrows leading outward to MDP, HMM, Bandit, and Game, each labeled with what was removed or added relative to the POMDP">
+        <defs><marker id="arrowGen" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#8A8F7E"/></marker></defs>
+
+        <line x1="380" y1="232" x2="380" y2="132" stroke="#8A8F7E" stroke-width="2" marker-end="url(#arrowGen)"/>
+        <text x="380" y="184" text-anchor="middle" font-family="Figtree,sans-serif" font-weight="600" font-size="12" fill="#4D5566">state seen</text>
+        <line x1="380" y1="312" x2="380" y2="434" stroke="#8A8F7E" stroke-width="2" marker-end="url(#arrowGen)"/>
+        <text x="380" y="378" text-anchor="middle" font-family="Figtree,sans-serif" font-weight="600" font-size="12" fill="#4D5566">no dynamics</text>
+        <line x1="293" y1="272" x2="192" y2="272" stroke="#8A8F7E" stroke-width="2" marker-end="url(#arrowGen)"/>
+        <text x="242" y="259" text-anchor="middle" font-family="Figtree,sans-serif" font-weight="600" font-size="12" fill="#4D5566">no actions</text>
+        <line x1="467" y1="272" x2="568" y2="272" stroke="#8A8F7E" stroke-width="2" marker-end="url(#arrowGen)"/>
+        <text x="518" y="259" text-anchor="middle" font-family="Figtree,sans-serif" font-weight="600" font-size="12" fill="#4D5566">+ 2nd agent</text>
+
+        <rect x="295" y="232" width="170" height="80" rx="12" fill="none" stroke="#1B2A4A" stroke-width="2.5"/>
+        <text x="380" y="264" text-anchor="middle" font-family="Fraunces,serif" font-weight="600" font-size="16" fill="#1B2A4A">POMDP</text>
+        <text x="380" y="286" text-anchor="middle" font-family="Figtree,sans-serif" font-size="11.5" fill="#4D5566">the general case</text>
+
+        <rect x="295" y="50" width="170" height="78" rx="10" fill="none" stroke="#6B1E2B" stroke-width="1.6"/>
+        <text x="380" y="82" text-anchor="middle" font-family="Fraunces,serif" font-weight="600" font-size="15" fill="#6B1E2B">MDP</text>
+        <text x="380" y="103" text-anchor="middle" font-family="Figtree,sans-serif" font-size="11" fill="#4D5566">can't express P1</text>
+
+        <rect x="295" y="438" width="170" height="78" rx="10" fill="none" stroke="#6B1E2B" stroke-width="1.6"/>
+        <text x="380" y="470" text-anchor="middle" font-family="Fraunces,serif" font-weight="600" font-size="15" fill="#6B1E2B">Bandit</text>
+        <text x="380" y="491" text-anchor="middle" font-family="Figtree,sans-serif" font-size="11" fill="#4D5566">no dynamics to track</text>
+
+        <rect x="18" y="233" width="170" height="78" rx="10" fill="none" stroke="#6B1E2B" stroke-width="1.6"/>
+        <text x="103" y="265" text-anchor="middle" font-family="Fraunces,serif" font-weight="600" font-size="15" fill="#6B1E2B">HMM</text>
+        <text x="103" y="286" text-anchor="middle" font-family="Figtree,sans-serif" font-size="11" fill="#4D5566">no decisions made</text>
+
+        <rect x="572" y="233" width="170" height="78" rx="10" fill="none" stroke="#6B1E2B" stroke-width="1.6"/>
+        <text x="657" y="265" text-anchor="middle" font-family="Fraunces,serif" font-weight="600" font-size="15" fill="#6B1E2B">Game</text>
+        <text x="657" y="286" text-anchor="middle" font-family="Figtree,sans-serif" font-size="11" fill="#4D5566">more than needed</text>
+      </svg>
+      <div class="diagram-caption">Four directions, four losses. Every arrow out of the POMDP box removes something this paper's proofs need — never adds anything they'd benefit from.</div>
+    </div>
+
+    <h2>The tuple, broken down</h2>
+    <div class="tuple-grid">
+      <div class="tuple-card"><div class="tc-sym">S</div><div class="tc-def">The hidden state — the true situation, never directly seen.</div></div>
+      <div class="tuple-card"><div class="tc-sym">A</div><div class="tc-def">The actions available at each decision point.</div></div>
+      <div class="tuple-card"><div class="tc-sym">O</div><div class="tc-def">What's actually observed — a noisy, partial signal correlated with S.</div></div>
+      <div class="tuple-card"><div class="tc-sym">trans</div><div class="tc-def">How the hidden state evolves in response to actions.</div></div>
+      <div class="tuple-card"><div class="tc-sym">obs</div><div class="tc-def">How observations are generated from the hidden state and action.</div></div>
+      <div class="tuple-card"><div class="tc-sym">r</div><div class="tc-def">The reward earned for an action taken in a given state.</div></div>
+    </div>
+    <p>Not every primitive needs a genuine gap between S and O. P1, P2, P3, and P6 are about <i>not knowing</i> something. P4 and P5 are about indecision or boundary-crossing <i>despite the state being fully known</i> — the structure correctly degenerating to the fully-observed special case for those two.</p>
+
+    <h2>Any decision maker, not just AI</h2>
+    <p>A reader meeting six primitives named things like <i>Cross-Context Safety Transfer</i> and <i>Policy Simplification</i>, proven against a POMDP in Lean 4, could reasonably conclude this is a paper about AI — about what a large language model or a learning agent needs before its decisions can be trusted. That conclusion is fair: AI systems making sequential decisions under uncertainty are the most visible, highest-stakes case this result speaks to, and nothing here excludes them.</p>
+    <p>But the six primitives are proven over the abstract structure of a POMDP — a hidden state, actions, noisy observations, reward — never over anything specific to a model, a training run, or a policy network. That abstraction is what gives the result its reach, and it's why the sections below turn to investment, insurance, and consulting: three domains with no machine learning in view, each still built from the same tuple and paying the same six costs when a primitive goes missing. They illustrate the theory's scope; they don't define its edge. The necessity results bind any sequential decision-making process that lands in Class C, whatever the domain calls itself — that reach, not any single example, is what makes this a unified functional theory.</p>
+
+    <h2>Three domains, the same formula</h2>
+    <div class="domain-tabs">
+      <button data-domain="investment" onclick="showDomain('investment')" class="active"><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="2" y="20" width="5" height="8" rx="1.5" fill="currentColor"/><rect x="10" y="15" width="5" height="13" rx="1.5" fill="currentColor"/><rect x="18" y="10" width="5" height="18" rx="1.5" fill="currentColor"/><rect x="26" y="5" width="5" height="23" rx="1.5" fill="currentColor"/></svg>Investment</button>
+      <button data-domain="insurance" onclick="showDomain('insurance')"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3 L27 7.5 V15.5 C27 23 22 28 16 30 C10 28 5 23 5 15.5 V7.5 Z" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linejoin="round"/><path d="M11 16 L15 20 L22 11.5" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/></svg>Insurance</button>
+      <button data-domain="consulting" onclick="showDomain('consulting')"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="13" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M16 7 L20 16 L16 25 L12 16 Z" fill="currentColor"/><circle cx="16" cy="16" r="2" fill="#FFFFFF"/></svg>Consulting</button>
+    </div>
+
+    <div class="domain-panel visible" id="domain-investment">
+      <div class="tbl-wrap"><table>
+        <tr><th>#</th><th>Failure</th><th>Hidden state (S)</th><th>Actions (A)</th><th>Observed (O)</th><th>Reward (r)</th></tr>
+        <tr><td><span class="chip chip-x1">P1</span></td><td>Reward ambiguity</td><td>The company's true value driver vs. its narrative</td><td>Underwrite the stated narrative / the independently-inferred driver</td><td>Guidance, price, financials — optimistic or incomplete</td><td>Identifying the true driver outperforms</td></tr>
+        <tr><td><span class="chip chip-x2">P2</span></td><td>Absorbing trap</td><td>Position liquidity and covenant headroom</td><td>Hold thinly-traded/levered / hold liquid, covenant-clear</td><td>Mark-to-market price, margin balance</td><td>A covenant trigger or margin call converts a loss into a permanent one</td></tr>
+        <tr><td><span class="chip chip-x3">P3</span></td><td>Local optimum</td><td>Whether a cheap security is genuinely undervalued or a value trap</td><td>Buy on the screen / invest in deeper diligence</td><td>Headline multiples vs. diligence findings</td><td>Screen-cheap pays moderate, reliable; genuine value pays more but needs sustained diligence</td></tr>
+        <tr><td><span class="chip chip-x4">P4</span></td><td>Deterministic optimality</td><td>Whether the thesis is already confirmed by repeated, independent data</td><td>Act on the settled thesis / keep hedging against it</td><td>Consistent confirming signal, no longer noisy</td><td>Committed sizing captures the edge; continued hedging destroys value through cost alone</td></tr>
+        <tr><td><span class="chip chip-x5">P5</span></td><td>Hard constraint</td><td>Position size relative to mandate/leverage/margin-of-safety threshold</td><td>Inside the threshold / outside it</td><td>Same as S — directly readable</td><td>Breaching it costs a fixed penalty regardless of the return case for breaching</td></tr>
+        <tr><td><span class="chip chip-x6">P6</span></td><td>Regime change</td><td>Macro regime or rate cycle, pre- and post-shift</td><td>Continue old-regime sizing / re-underwrite</td><td>Ongoing price, rate, fundamental data</td><td>A thesis correct in one regime can be wrong in the next, unannounced</td></tr>
+      </table></div>
+      <h3>Fully worked tuple — P3, the flagship case</h3>
+      <pre>S  = {ValueTrap, GenuineValue}     -- is the cheap valuation real or structural decay?
+A  = {ActOnScreen, InvestInDiligence}
+O  = ScreenMultiple &isin; &#8477;            -- headline signal, correlated with but not equal to S
+r  = 1/2  if ActOnScreen
+     1    if InvestInDiligence and it resolves to GenuineValue
+     0    if InvestInDiligence and it resolves to ValueTrap</pre>
+      <p>This is <code>E3(p)</code> from the paper, unchanged in structure — <code>stay</code> renamed <i>act on the screen</i>, <code>bridge</code> renamed <i>invest in diligence</i>.</p>
+      <div class="tbl-wrap"><table>
+        <tr><th>Primitive</th><th>What's required</th></tr>
+        <tr><td><span class="chip chip-x1">X1</span></td><td>Distinguishing a company's actual value driver from the narrative it presents.</td></tr>
+        <tr><td><span class="chip chip-x2">X2</span></td><td>Recognizing the position structure that converts a loss into a permanent one, and not holding it once recognized.</td></tr>
+        <tr><td><span class="chip chip-x3">X3</span></td><td>Sustained diligence investment past the comfortable, screen-cheap answer.</td></tr>
+        <tr><td><span class="chip chip-x4">X4</span></td><td>Sizing to the conviction the evidence already supports, not continuing to hedge an already-settled thesis.</td></tr>
+        <tr><td><span class="chip chip-x5">X5</span></td><td>Treating a mandate or margin-of-safety threshold as a wall, never traded against upside elsewhere.</td></tr>
+        <tr><td><span class="chip chip-x6">X6</span></td><td>Re-underwriting once the regime has shifted, rather than defending the original call.</td></tr>
+      </table></div>
+    </div>
+
+    <div class="domain-panel" id="domain-insurance">
+      <div class="tbl-wrap"><table>
+        <tr><th>#</th><th>Failure</th><th>Hidden state (S)</th><th>Actions (A)</th><th>Observed (O)</th><th>Reward (r)</th></tr>
+        <tr><td><span class="chip chip-x1">P1</span></td><td>Reward ambiguity</td><td>A policyholder's true risk propensity</td><td>Price as disclosed class / as independently-inferred</td><td>Application data, self-reported history — subject to adverse selection</td><td>Correct classification matches loss experience; mismatch erodes margin silently</td></tr>
+        <tr><td><span class="chip chip-x2">P2</span></td><td>Absorbing trap</td><td>Solvency relative to an uncapped/under-reinsured exposure</td><td>Bind uncapped exposure / bind capped, reinsured risk</td><td>Loss experience, uneventful until it isn't</td><td>A single tail event can trigger insolvency, with no warning</td></tr>
+        <tr><td><span class="chip chip-x3">P3</span></td><td>Local optimum</td><td>Whether a new underwriting model beats the mature product line</td><td>Continue traditional line / invest in the new model</td><td>Loss ratios, growth on the current book</td><td>Traditional line pays steady, capped growth; the better model needs sustained investment</td></tr>
+        <tr><td><span class="chip chip-x4">P4</span></td><td>Deterministic optimality</td><td>Whether a fraud/risk-flag pattern is already decisively validated</td><td>Codify the validated rule / keep it discretionary</td><td>Consistent confirming signal across loss-history reviews</td><td>Codifying captures the proven margin; optionality lets solved leakage recur</td></tr>
+        <tr><td><span class="chip chip-x5">P5</span></td><td>Hard constraint</td><td>Reserve/capital level relative to the regulatory minimum</td><td>Keep capital above the minimum / drop below it</td><td>Same as S — directly readable from financial statements</td><td>Dropping below the floor is categorically prohibited, regardless of the profit case</td></tr>
+        <tr><td><span class="chip chip-x6">P6</span></td><td>Regime change</td><td>The underlying claims process, pre- and post-shift</td><td>Price on the historical triangle / re-price to the new process</td><td>Realized claims, legal and climate developments</td><td>Historical pricing stops being correct the moment the process shifts, unannounced</td></tr>
+      </table></div>
+      <h3>Fully worked tuple — P5, the flagship case</h3>
+      <pre>S  = ReserveLevel &isin; &#8477;
+A  = &#8477;  (dividend/investment/growth action)
+F  = { a : ReserveLevel &minus; a &ge; RegulatoryMinimum }   -- feasible set
+r(s, a) = payout(a)  if a &isin; F, else &minus;M</pre>
+      <p>This is <code>E5</code> from the paper, unchanged in structure — the forbidden action region renamed the regulatory solvency floor.</p>
+      <div class="tbl-wrap"><table>
+        <tr><th>Primitive</th><th>What's required</th></tr>
+        <tr><td><span class="chip chip-x1">X1</span></td><td>Inferring true risk propensity, not just pricing off self-reported signals.</td></tr>
+        <tr><td><span class="chip chip-x2">X2</span></td><td>Recognizing the underwriting action that creates uncapped exposure, and not repeating it.</td></tr>
+        <tr><td><span class="chip chip-x3">X3</span></td><td>Sustained investment in new underwriting models past the capped-growth status quo.</td></tr>
+        <tr><td><span class="chip chip-x4">X4</span></td><td>Codifying a validated rule into binding policy rather than leaving it discretionary.</td></tr>
+        <tr><td><span class="chip chip-x5">X5</span></td><td>Treating the solvency floor as a wall, never traded against growth elsewhere.</td></tr>
+        <tr><td><span class="chip chip-x6">X6</span></td><td>Re-pricing once the claims process has shifted, rather than defending the historical triangle.</td></tr>
+      </table></div>
+    </div>
+
+    <div class="domain-panel" id="domain-consulting">
+      <div class="tbl-wrap"><table>
+        <tr><th>#</th><th>Failure</th><th>Hidden state (S)</th><th>Actions (A)</th><th>Observed (O)</th><th>Reward (r)</th></tr>
+        <tr><td><span class="chip chip-x1">P1</span></td><td>Reward ambiguity</td><td>True root cause: process vs. people/incentive failure</td><td>Diagnose-as-process / diagnose-as-people</td><td>Interview and KPI signals, correlated but not conclusive</td><td>Success only if diagnosis matches the true cause</td></tr>
+        <tr><td><span class="chip chip-x2">P2</span></td><td>Absorbing trap</td><td>Client relationship health</td><td>Recommend aggressive restructuring / an incremental, reversible step</td><td>Client feedback each step</td><td>The aggressive action can trigger irreversible relationship loss</td></tr>
+        <tr><td><span class="chip chip-x3">P3</span></td><td>Local optimum</td><td>Whether a better methodology exists for this client</td><td>Run the standard playbook / pilot a new approach</td><td>Engagement outcomes</td><td>Standard playbook pays reliable, capped return; the new approach needs sustained piloting</td></tr>
+        <tr><td><span class="chip chip-x4">P4</span></td><td>Deterministic optimality</td><td>Whether this matches a pattern validated by past engagements</td><td>Apply the proven intervention / keep it "under review"</td><td>Consistent track record across prior engagements</td><td>Applying it wins by a fixed margin every time</td></tr>
+        <tr><td><span class="chip chip-x5">P5</span></td><td>Hard constraint</td><td>Engagement scope relative to the conflict-of-interest boundary</td><td>Inside professional bounds / crossing the line</td><td>Same as S — fully visible</td><td>Crossing the line costs a fixed penalty regardless of fee upside</td></tr>
+        <tr><td><span class="chip chip-x6">P6</span></td><td>Regime change</td><td>Client's competitive/regulatory environment, pre- and post-disruption</td><td>Continue the original strategy / adapt</td><td>Ongoing engagement signals</td><td>The pre-disruption strategy stops being optimal, unannounced</td></tr>
+      </table></div>
+      <h3>Fully worked tuple — P1, the flagship case</h3>
+      <pre>S  = {ProcessFailure, PeopleFailure}          -- hidden true root cause
+A  = {DiagnoseProcess, DiagnoseIncentive}
+O  = InterviewSignal &isin; &#8477;                       -- noisy correlate of S
+r(s, a) = 1/2 + &Delta;  if a matches s, else 1/2 &minus; &Delta;</pre>
+      <p>This is <code>E1&#8320;</code>/<code>E1&#8321;</code> from the paper, unchanged in structure — <code>arm</code> renamed <i>diagnosis</i>, <code>&Theta;*</code> renamed <i>root cause</i>.</p>
+      <div class="tbl-wrap"><table>
+        <tr><th>Primitive</th><th>What's required</th></tr>
+        <tr><td><span class="chip chip-x1">X1</span></td><td>Distinguishing the true root cause from its stated symptom, updated as evidence arrives.</td></tr>
+        <tr><td><span class="chip chip-x2">X2</span></td><td>Recognizing the action that creates irreversible relationship damage, and not taking it.</td></tr>
+        <tr><td><span class="chip chip-x3">X3</span></td><td>Sustained investment in exploring beyond the standard playbook.</td></tr>
+        <tr><td><span class="chip chip-x4">X4</span></td><td>Committing to the intervention the evidence has settled, not re-litigating it.</td></tr>
+        <tr><td><span class="chip chip-x5">X5</span></td><td>Treating professional and ethical boundaries as walls, never traded against fee upside.</td></tr>
+        <tr><td><span class="chip chip-x6">X6</span></td><td>Discarding a diagnosis once the client's environment has genuinely shifted.</td></tr>
+      </table></div>
+    </div>
+
+    <p style="margin-top:20px"><i>This environment is in Class C. Under the paper's necessity results, the matching primitive is not optional for it — its absence guarantees regret that grows without bound the longer the process operates, regardless of what the domain calls itself. Full stop.</i></p>
+
+    <h2>Looks like succeeding is not the same as succeeding</h2>
+    <p>A process can look like it's succeeding and still be mathematically guaranteed to fail. These aren't in tension — "looks like it's succeeding" and "regret" measure different things.</p>
+    <p>Regret is the running gap between what was captured and what was achievable — not a score for the latest period. A process can post steady, positive results for a long time while that gap grows underneath it the entire time. In the corridor behind X2, the safe action pays real reward every step, right up until the trap fires. In the regime-switch behind X6, a stale strategy keeps paying a real, positive return — just a smaller one, forever, with no announcement.</p>
+    <p>For a process lacking a required primitive, this gap doesn't fluctuate. It grows at a fixed rate, without limit, for as long as the process runs.</p>
+    <p class="pull">Time without incident is not evidence the gap has stopped growing.</p>
+
+    <h2>The 2-foot leap</h2>
+    <p>Every example here is the simplest possible version of its failure, deliberately. A real investment, engagement, or policy has more moving parts, never fewer — and each one is another place for the same failure to hide.</p>
+
+    <div class="diagram-card">
+      <svg viewBox="0 0 420 340" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Two concentric circles: a small inner circle labeled two-foot leap, containing the minimal environments E1 through E6, sits inside a larger circle labeled the real world">
+        <circle cx="210" cy="190" r="125" fill="none" stroke="#8A8F7E" stroke-width="2" stroke-dasharray="7 5"/>
+        <text x="210" y="100" text-anchor="middle" font-family="Figtree,sans-serif" font-weight="700" font-size="12.5" letter-spacing="1" fill="#4D5566">THE REAL WORLD</text>
+        <text x="210" y="118" text-anchor="middle" font-family="Figtree,sans-serif" font-size="11.5" fill="#8A8F7E">more moving parts, never fewer</text>
+        <circle cx="210" cy="190" r="55" fill="none" stroke="#CC5500" stroke-width="2.4"/>
+        <text x="210" y="186" text-anchor="middle" font-family="Fraunces,serif" font-weight="600" font-size="15" fill="#9A3F00">2-FOOT LEAP</text>
+        <text x="210" y="205" text-anchor="middle" font-family="ui-monospace,monospace" font-size="11.5" fill="#9A3F00">E1 ... E6</text>
+      </svg>
+      <div class="diagram-caption"><b>The floor persists into every harder case containing it.</b> A necessity result proven on the smallest instance of a failure holds inside every messier, real environment that contains that instance — which every harder case does.</div>
+    </div>
+
+    <p>If you cannot make a two-foot leap, you cannot make a ten-foot leap. The two-foot leap isn't a warm-up. It's a floor. A harder jump has never made the underlying requirement optional.</p>
+    <p>A necessity result proven on the smallest case is a floor that persists into every harder case containing it. That's why these examples stay minimal.</p>
+
+    <h2>Literature review</h2>
+    <p>The six primitives and the necessity results are this paper's own contribution. The environments they're proven on are not built in a vacuum — each sits inside an existing line of stochastic-control literature. Closest analogues below, domain by domain, so a reader already familiar with that literature can see exactly where this paper's constructions depart from it.</p>
+
+    <h3><span class="h3-icon" style="color:var(--bottle)"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3 L27 7.5 V15.5 C27 23 22 28 16 30 C10 28 5 23 5 15.5 V7.5 Z" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linejoin="round"/><path d="M11 16 L15 20 L22 11.5" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Insurance</h3>
+    <p class="lit-lede">Markov/POMDP-shaped control of insurer reserves, dividends, and reinsurance.</p>
+    <ul class="ref-list">
+      <li class="ref-item"><span class="ref-au">De Finetti, B.</span> (1957). <i>Su un'impostazione alternativa della teoria collettiva del rischio.</i> Transactions of the XVth International Congress of Actuaries.</li>
+      <li class="ref-item"><span class="ref-au">Bäuerle, N. &amp; Rieder, U.</span> (2011). <i>Markov Decision Processes with Applications to Finance.</i> Springer.</li>
+      <li class="ref-item"><span class="ref-au">Azcue, P. &amp; Muler, N.</span> (2014). <i>Stochastic Optimization in Insurance: A Dynamic Programming Approach.</i> Springer.</li>
+      <li class="ref-item"><span class="ref-au">Zeng, L. &amp; Li, M.</span> (2025). <i>Long-Run Average Reward Maximization of a Regulated Regime-Switching Diffusion Model.</i> <a href="https://arxiv.org/abs/2512.15167" target="_blank" rel="noopener">arXiv:2512.15167</a> <span class="ref-note">— regulated regime-switching dividend/reinsurance control under a minimum solvency floor.</span></li>
+    </ul>
+
+    <h3><span class="h3-icon" style="color:var(--navy)"><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="2" y="20" width="5" height="8" rx="1.5" fill="currentColor"/><rect x="10" y="15" width="5" height="13" rx="1.5" fill="currentColor"/><rect x="18" y="10" width="5" height="18" rx="1.5" fill="currentColor"/><rect x="26" y="5" width="5" height="23" rx="1.5" fill="currentColor"/></svg></span>Investment</h3>
+    <p class="lit-lede">Portfolio optimization under a hidden, regime-switching market state.</p>
+    <ul class="ref-list">
+      <li class="ref-item"><span class="ref-au">Bäuerle, N. &amp; Rieder, U.</span> (2005). <i>Portfolio optimization with unobservable Markov-modulated drift process.</i> Journal of Applied Probability, 42.</li>
+      <li class="ref-item"><span class="ref-au">Elliott, R. J. &amp; Siu, T. K.</span> <i>Stochastic switching for partially observable dynamics and optimal asset allocation.</i> Applied Mathematical Finance.</li>
+      <li class="ref-item"><span class="ref-au">Sass, J. &amp; Haussmann, U. G.</span> (2004). <i>Optimizing the terminal wealth under partial information.</i> Finance and Stochastics, 8.</li>
+    </ul>
+
+    <h3><span class="h3-icon" style="color:var(--maroon)"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="13" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M16 7 L20 16 L16 25 L12 16 Z" fill="currentColor"/><circle cx="16" cy="16" r="2" fill="#FFFFFF"/></svg></span>Consulting</h3>
+    <div class="block mustard">
+      <p style="margin-bottom:0;">No existing literature models this directly as a POMDP or adjacent framework. A direct search found none; the closest classical POMDP survey (Monahan, 1982, <i>Management Science</i>) lists "internal auditing" as an application area, which is a related but distinct activity. This site's consulting construction is original, built directly from Definition 2.1 — its validity rests on the construction itself, not on prior precedent.</p>
+    </div>
+
+    <h3>General POMDP framework</h3>
+    <ul class="ref-list">
+      <li class="ref-item"><span class="ref-au">Kaelbling, L. P., Littman, M. L., &amp; Cassandra, A. R.</span> (1998). <i>Planning and acting in partially observable stochastic domains.</i> Artificial Intelligence, 101. <span class="ref-note">— already cited in the paper itself (Section 4.2).</span></li>
+      <li class="ref-item"><span class="ref-au">Monahan, G. E.</span> (1982). <i>A survey of partially observable Markov decision processes.</i> Management Science, 28.</li>
+    </ul>
+
+    <div class="page-nav-row">
+      <button class="btn ghost" onclick="showPage('primitives')">← Ismail's Primitives</button>
+      <button class="btn ghost" onclick="showPage('success')">Route Towards Success →</button>
+    </div>
+  </div>
+</section>
+
+<section id="page-success" class="page">
+  <div class="hero-band bottle">
+    <svg class="hero-motif" viewBox="0 0 1200 400" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <g stroke="#14392E" fill="none">
+        <line x1="800" y1="120" x2="1185" y2="120" stroke-width="2.2" stroke-dasharray="7 7"/>
+        <line x1="800" y1="292" x2="1185" y2="292" stroke-width="2.6"/>
+        <path d="M992,280 L992,132"/>
+        <path d="M985,145 L992,130 L999,145"/>
+      </g>
+      <g fill="#14392E">
+        <circle cx="862" cy="292" r="6"/>
+        <circle cx="940" cy="292" r="6"/>
+        <circle cx="1040" cy="292" r="6"/>
+        <circle cx="1118" cy="292" r="6"/>
+      </g>
+    </svg>
+    <div class="hero-inner">
+    <span class="eyebrow">What Comes After the Floor</span>
+    <h1>Route Towards Success</h1>
+  </div></div>
+
+  <div class="page-inner">
+
+    <h2>The Open Challenge</h2>
+    <div class="block maroon">
+      <p>No published formalization shows these six primitives are unnecessary, substitutable, or absent from any member of Class C — across consulting, investing, insurance, or elsewhere.</p>
+      <p>If a firm believes its domain sits outside Class C, or that one of the six doesn't apply to it, the standard of proof is the one this paper met: a machine-checked counter-formalization in Lean 4. We'd welcome it.</p>
+      <p>Until one exists, the mathematics stands as published — open-source, independently verifiable in minutes, free to build on with citation only.</p>
+    </div>
+
+    <h2>Failure does not mean success</h2>
+    <p>Proving a process fails without something is not the same claim as proving that having it guarantees success. These sit on opposite sides of the same mathematics. Confusing them is its own mistake.</p>
+
+    <h2>Objective vs. subjective</h2>
+    <p><b>Necessity is a lower bound.</b> It holds regardless of what a decision-maker wants — no goal variable, no domain, no opinion about what "winning" means required.</p>
+    <p><b>Success is an upper bound.</b> It says what a specific approach can achieve — and "achieve" requires first naming what's being optimized for. That naming isn't mathematics. It's a domain deciding what it wants.</p>
+
+    <div class="diagram-card">
+      <svg viewBox="0 0 800 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram showing necessity as a solid floor holding the six primitives, domain-independent, and success as a dashed ceiling above it, defined differently by each domain, connected by an upward arrow labeled the Part III bridge">
+        <defs><marker id="arrowFloor" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#CC5500"/></marker></defs>
+        <text x="400" y="20" text-anchor="middle" font-family="Figtree,sans-serif" font-weight="700" font-size="12" letter-spacing="0.8" fill="#14392E">SUCCESS — THE CEILING (DOMAIN-DEFINED)</text>
+        <line x1="70" y1="75" x2="730" y2="75" stroke="#14392E" stroke-width="2.5" stroke-dasharray="7 5"/>
+        <line x1="170" y1="58" x2="170" y2="75" stroke="#14392E" stroke-width="1.5"/>
+        <text x="170" y="48" text-anchor="middle" font-family="Figtree,sans-serif" font-weight="600" font-size="12" fill="#14392E">Investment</text>
+        <line x1="400" y1="58" x2="400" y2="75" stroke="#14392E" stroke-width="1.5"/>
+        <text x="400" y="48" text-anchor="middle" font-family="Figtree,sans-serif" font-weight="600" font-size="12" fill="#14392E">Consultancy</text>
+        <line x1="630" y1="58" x2="630" y2="75" stroke="#14392E" stroke-width="1.5"/>
+        <text x="630" y="48" text-anchor="middle" font-family="Figtree,sans-serif" font-weight="600" font-size="12" fill="#14392E">Insurance</text>
+        <path d="M 400 193 L 400 82" fill="none" stroke="#CC5500" stroke-width="3" marker-end="url(#arrowFloor)"/>
+        <text x="418" y="130" font-family="Fraunces,serif" font-weight="600" font-size="13" fill="#9A3F00">Part III + domain</text>
+        <text x="418" y="147" font-family="Fraunces,serif" font-weight="600" font-size="13" fill="#9A3F00">expertise</text>
+        <text x="418" y="164" font-family="Figtree,sans-serif" font-size="11.5" fill="#9A3F00">= the bridge</text>
+        <line x1="70" y1="195" x2="730" y2="195" stroke="#1B2A4A" stroke-width="3"/>
+        <circle cx="164" cy="195" r="7" fill="#FFFFFF" stroke="#3B5BA5" stroke-width="2.6"/><circle cx="259" cy="195" r="7" fill="#FFFFFF" stroke="#A5333B" stroke-width="2.6"/><circle cx="353" cy="195" r="7" fill="#FFFFFF" stroke="#2F7A5E" stroke-width="2.6"/><circle cx="447" cy="195" r="7" fill="#FFFFFF" stroke="#B9861E" stroke-width="2.6"/><circle cx="541" cy="195" r="7" fill="#FFFFFF" stroke="#6B4C8A" stroke-width="2.6"/><circle cx="636" cy="195" r="7" fill="#FFFFFF" stroke="#46707A" stroke-width="2.6"/>
+        <text x="400" y="222" text-anchor="middle" font-family="Figtree,sans-serif" font-weight="700" font-size="12" letter-spacing="0.8" fill="#1B2A4A">NECESSITY — THE FLOOR (DOMAIN-INDEPENDENT)</text>
+      </svg>
+      <div class="diagram-caption">The floor is fixed and provable. The ceiling is set by whoever is standing on the floor — an investment mandate, a client engagement, a policy book. Part III is the bridge between the two, and it needs the domain's own goal to close.</div>
+    </div>
+
+    <h2>What success means, by domain</h2>
+    <div class="card-grid">
+      <div class="success-card" style="border-top-color:var(--navy)">
+        <div class="sc-head"><span class="domain-icon" style="color:var(--navy)"><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="2" y="20" width="5" height="8" rx="1.5" fill="currentColor"/><rect x="10" y="15" width="5" height="13" rx="1.5" fill="currentColor"/><rect x="18" y="10" width="5" height="18" rx="1.5" fill="currentColor"/><rect x="26" y="5" width="5" height="23" rx="1.5" fill="currentColor"/></svg></span><h4>Investment</h4></div>
+        <p>The greatest returns achievable, given the mandate.</p>
+      </div>
+      <div class="success-card" style="border-top-color:var(--maroon)">
+        <div class="sc-head"><span class="domain-icon" style="color:var(--maroon)"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="13" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M16 7 L20 16 L16 25 L12 16 Z" fill="currentColor"/><circle cx="16" cy="16" r="2" fill="#FFFFFF"/></svg></span><h4>Consultancy</h4></div>
+        <p>The most efficient outcome achievable for the client.</p>
+      </div>
+      <div class="success-card" style="border-top-color:var(--bottle)">
+        <div class="sc-head"><span class="domain-icon" style="color:var(--bottle)"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3 L27 7.5 V15.5 C27 23 22 28 16 30 C10 28 5 23 5 15.5 V7.5 Z" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linejoin="round"/><path d="M11 16 L15 20 L22 11.5" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><h4>Insurance</h4></div>
+        <p>Policies covering real loss, no loopholes or fine print — protecting client and insurer at once.</p>
+      </div>
+    </div>
+
+    <h2>Same recipe, different emphasis</h2>
+    <p>The six primitives required to avoid failure don't change across these three. What changes is emphasis — which primitives must be held robustly, not just adequately, and which domain-specific variables layer on top — depending on which success is being built toward.</p>
+    <div class="tbl-wrap">
+      <table class="indep-grid">
+        <tr><th></th><th>Investment</th><th>Insurance</th><th>Consultancy</th></tr>
+        <tr><td><span class="chip chip-x1">X1</span></td><td class="cell-yes">✓</td><td class="cell-yes">✓</td><td class="cell-star">★</td></tr>
+        <tr><td><span class="chip chip-x2">X2</span></td><td class="cell-yes">✓</td><td class="cell-yes">✓</td><td class="cell-yes">✓</td></tr>
+        <tr><td><span class="chip chip-x3">X3</span></td><td class="cell-star">★</td><td class="cell-yes">✓</td><td class="cell-yes">✓</td></tr>
+        <tr><td><span class="chip chip-x4">X4</span></td><td class="cell-yes">✓</td><td class="cell-yes">✓</td><td class="cell-yes">✓</td></tr>
+        <tr><td><span class="chip chip-x5">X5</span></td><td class="cell-yes">✓</td><td class="cell-star">★</td><td class="cell-yes">✓</td></tr>
+        <tr><td><span class="chip chip-x6">X6</span></td><td class="cell-yes">✓</td><td class="cell-yes">✓</td><td class="cell-yes">✓</td></tr>
+      </table>
+    </div>
+    <p class="section-note" style="margin-top:10px;">✓ = fully required, same as every other domain. ★ = the flagship case worked through on the previous page — where that domain's emphasis is sharpest, not where the other five stop mattering.</p>
+
+    <h2>Who is Muhammed Ismail</h2>
+    <p>Ismail is 36, based in South Africa, and entirely self-taught — in mathematics, in economics, in the mechanics of business, and in enough psychology to notice what happened next.</p>
+    <p>In September 2025, while trying to understand his own decision-making rather than anyone else's, he noticed that his reasoning kept passing through the same six-step pattern, regardless of what the decision was about. For a while that observation stayed a personal heuristic — a way of checking his own thinking before acting on it. What changed was recognizing that the pattern wasn't just useful. It looked like it could be proven.</p>
+    <p>He had no formal training in mathematics before that point. He taught himself what a proof at this level required, in roughly the order he needed it. By April 2026 the result existed as a prose corpus, largely complete.</p>
+    <p>Proving it, though, made something else clear: this wasn't shaping up to be a simple theorem. The same structure kept holding as Ismail tested it against a wide range of industries and disciplines — not as a loose analogy, but as what the finished paper's own title now calls it: a Unified Functional Theory. Unified, because the same handful of structural failures recur across investing, operations, public policy, and reinforcement learning alike, with one proof serving all of them at once. Functional, because what's being characterized is what a decision process has to do under uncertainty — never which field it happens to sit in. The claim is a deliberately narrow one, though: it holds for a specific, defined class of environments — what the papers call Class C — sequential decisions made under real uncertainty, where information is incomplete, conditions shift, and mistakes aren't always reversible. No more, no less.</p>
+    <p>That is where the difficulty started. An independent researcher with no institutional affiliation, presenting a result that needs specialists in formal logic and decision theory to evaluate the mathematics — and separate specialists again for each domain the mathematics was shown to reach — has no realistic route through traditional peer review on any usable timeline. So the mathematics was rebuilt instead as a Lean 4 formalization: something a kernel checks deterministically, without needing to check the author first. Learning Mathlib well enough to do that produced two things — the 12,700-line proof this site describes, and, as a byproduct of the learning itself, Ismail's Glossary. Every paper written since has been re-anchored to that verified core as its foundation.</p>
+    <p>None of this is the conventional route into a result like this. It is the route available to someone starting with no institution behind him and no formal mathematics in front of him. The reason it does not need to be taken on faith is the same reason stated at the start of this paper: nothing here rests on who proved it. It rests on whether Lean's kernel accepted it. It did.</p>
+
+    <h2>More from Muhammed Ismail</h2>
+    <p>This paper is one part of a larger, ongoing body of work. Two threads continue past it: a reference project built in the same Lean 4 ecosystem, and further papers that extend the six primitives themselves into domains further still from the ones illustrated above.</p>
+
+    <h3>Ismail's Glossary</h3>
+    <p class="lit-lede">A complete navigation index for Mathlib, the Lean 4 library this paper's proof is built on.</p>
+    <p>Mathlib is one of the largest libraries of formalized mathematics in existence — over 9,150 modules, with no plain-language map of what any of them contain. <i>Ismail's Glossary</i> gives every module a short, human-readable description, an interactive atlas of how its 32 domains relate, and a progressive reference for learning Lean itself, so navigating the library no longer requires already knowing what you're looking for.</p>
+    <div class="btn-row">
+      <a class="btn" href="https://m-ismail-za.github.io/IsmailsGlossary/" target="_blank" rel="noopener">Open the Glossary ↗</a>
+      <a class="btn ghost" href="https://github.com/M-Ismail-ZA/IsmailsGlossary" target="_blank" rel="noopener">Repository ↗</a>
+      <a class="btn ghost" href="https://doi.org/10.5281/zenodo.21192789" target="_blank" rel="noopener">Paper, DOI 10.5281/zenodo.21192789 ↗</a>
+    </div>
+
+    <h3>Extending Ismail's Primitives</h3>
+    <p>The necessity results proven here are stated abstractly enough to travel beyond business decision-making entirely. Companion papers have since applied the same six primitives to developmental psychology, to psychotherapy, and to economic coordination theory. The developmental-psychology paper argues that Erikson's psychosocial stages, Maslow's motivational hierarchy, and Bowlby's attachment phases independently converge on the same six-stage sequence proven necessary here — evidence, on that reading, of shared underlying structure rather than analogy. Further papers are in preparation.</p>
+    <ul class="ref-list">
+      <li class="ref-item"><span class="ref-au">Ismail, M.</span> (2026). <i>Ismail's Primitives and Human Development: A Functional Isomorphism Between a Lean-Verified Computational Theory and Developmental Psychology.</i> <a href="https://doi.org/10.5281/zenodo.21257553" target="_blank" rel="noopener">doi.org/10.5281/zenodo.21257553</a></li>
+      <li class="ref-item"><span class="ref-au">Ismail, M.</span> (2026). <i>Ismail's Primitives: An Emotional Adaptation Theory for Therapy Discovered through Functional Isomorphism.</i> <a href="https://doi.org/10.5281/zenodo.21289914" target="_blank" rel="noopener">doi.org/10.5281/zenodo.21289914</a></li>
+      <li class="ref-item"><span class="ref-au">Ismail, M.</span> (2026). <i>Ismail's Primitives: Lean-verified Economic Adaptation Theory.</i> <a href="https://doi.org/10.5281/zenodo.21289756" target="_blank" rel="noopener">doi.org/10.5281/zenodo.21289756</a></li>
+    </ul>
+
+    <h2>Who Builds the Bridge</h2>
+    <div class="block bottle">
+      <p>The mathematics to build a formal bridge from necessity to a specific success is published, open, and in Lean. Building one takes more than Part III's sequential-dependence machinery on its own — measure-theoretic probability and martingale convergence are necessary, but not sufficient. Sufficiency theorems have been attempted before by people who understood optimization well; most fail quietly, because they were never grounded in a rigorous account of failure to begin with. Part III's scaffold only holds because Part I first proved which primitives are actually necessary and Part II proved that none of the six can substitute for another — skip that grounding, and a "sufficiency" result is an assumption wearing a proof's clothing. Building the bridge properly means holding necessity, independence, and the sequential scaffold together, formalizing that combination well enough in Lean 4's dependent type theory to extend it rather than take someone else's word for it, and bringing a working command of whatever domain the bridge needs to land in.</p>
+      <p>That combination is rare enough on its own. Ismail discovered these six primitives, proved them, and formalized the proof himself, and has since carried the same structure into economics and into psychology — a field that has never been especially hospitable to formal proof. That is not one success extrapolated into a guess at a second. Moving the same structure across domains is not a method he learned to apply; at this point, it is simply how he thinks. Organizations that need the bridge built for a specific case can reach him directly.</p>
+      <div class="btn-row">
+        <a class="btn" href="mailto:literacity@outlook.com">Email Ismail</a>
+        <a class="btn ghost" href="https://www.linkedin.com/in/researcher-adaptationtheory/" target="_blank" rel="noopener">Connect on LinkedIn ↗</a>
+      </div>
+    </div>
+
+    <div class="page-nav-row">
+      <button class="btn ghost" onclick="showPage('failure')">← The Nature of Failure</button>
+      <span class="spacer"></span>
+      <a href="#primitives" class="loop-back" onclick="showPage('primitives');return false;">↻ Back to the beginning</a>
+    </div>
+  </div>
+</section>
+
+<footer class="site-foot">
+  <div class="foot-links">
+    <a href="https://github.com/M-Ismail-ZA/IsmailsPrimitives" target="_blank" rel="noopener">Repository</a> ·
+    <a href="https://doi.org/10.5281/zenodo.21177368" target="_blank" rel="noopener">Paper (DOI)</a>
+  </div>
+  <div class="foot-fine">Ismail's Primitives — paper CC BY 4.0 · Lean formalization MIT License · Muhammed Ismail, Independent Researcher</div>
+</footer>
+
+<script>
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('visible'));
+  document.getElementById('page-' + id).classList.add('visible');
+  document.querySelectorAll('.route-step').forEach(b => b.classList.toggle('active', b.dataset.page === id));
+  try { history.replaceState(null, '', '#' + id); } catch (e) { /* sandboxed preview contexts (e.g. srcdoc) disallow this; safe to ignore */ }
+  window.scrollTo({top: 0, behavior: 'instant'});
+}
+function showDomain(id) {
+  document.querySelectorAll('.domain-panel').forEach(p => p.classList.remove('visible'));
+  document.getElementById('domain-' + id).classList.add('visible');
+  document.querySelectorAll('.domain-tabs button').forEach(b => b.classList.toggle('active', b.dataset.domain === id));
+}
+function initFromHash() {
+  let id = 'primitives';
+  try { id = (location.hash || '#primitives').slice(1); } catch (e) {}
+  const valid = ['primitives', 'failure', 'success'].includes(id) ? id : 'primitives';
+  showPage(valid);
+}
+window.addEventListener('DOMContentLoaded', initFromHash);
+window.addEventListener('hashchange', initFromHash);
+</script>
+
+</body>
+</html>
