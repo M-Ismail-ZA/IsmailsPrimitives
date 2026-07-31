@@ -20,7 +20,7 @@ README stays close to the formalization itself.
 
 The theory identifies six structural primitives that any decision-maker —
 a person, an institution, or a machine — must possess to achieve sublinear
-regret in a mostly general class of partially observable environments under
+regret in a broad, yet precisely defined union class of partially observable environments under
 uncertainty (the paper defines the specific environment class **Class C**), and
 proves — entirely inside Lean's type theory, checked by the kernel, with
 zero `sorry`, zero custom `axiom`, and zero `opaque` definitions — that
