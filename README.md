@@ -263,4 +263,4 @@ without first needing to check the author. Learning Mathlib well enough to
 do that produced this repository's ~12,700 lines, and, as a byproduct of
 the learning itself, [Ismail's Glossary](#related-project-ismails-glossary).
 
-Email: <literacity@outlook.com> · ORCID: [0009-0000-3713-7105](https://orcid.org/0009-0000-3713-7105) · [LinkedIn](https://www.linkedin.com/in/researcher-adaptationtheory/)
+Email: <literacity@outlook.com> · ORCID: [0009-0000-3713-7105](https://orcid.org/0009-0000-3713-7105) · [LinkedIn](https://www.linkedin.com/in/researcher-adaptationtheory/) 
