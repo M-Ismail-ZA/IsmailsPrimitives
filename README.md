@@ -255,12 +255,10 @@ recurring pattern in his own decision-making in September 2025, and
 developed into a complete theory over the months that followed.
 
 As an unaffiliated researcher, a result that needs specialists in formal
-logic and decision theory to evaluate the mathematics — and separate
-specialists again for each domain it's shown to reach — has no realistic
-route through traditional peer review on any useful timeline. So the proof
-was built in Lean 4 instead: a claim a kernel checks deterministically,
-without first needing to check the author. Learning Mathlib well enough to
-do that produced this repository's ~12,700 lines, and, as a byproduct of
+logic and decision theory to evaluate the mathematics, so the proof
+was built in Lean 4: every claim the kernel checks deterministically,
+without the need to check the author. Ismail then learnt Mathlib well enough
+to produce this repository's ~12,700 lines, and, as a byproduct of
 the learning itself, [Ismail's Glossary](#related-project-ismails-glossary).
 
 Email: <literacity@outlook.com> · ORCID: [0009-0000-3713-7105](https://orcid.org/0009-0000-3713-7105) · [LinkedIn](https://www.linkedin.com/in/researcher-adaptationtheory/) 
