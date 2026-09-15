@@ -249,16 +249,15 @@ reference for learning Lean itself.
 
 ## Author
 
-Muhammed Ismail is an independent researcher based in South Africa,
-self-taught in mathematics. The six primitives were first noticed as a
-recurring pattern in his own decision-making in September 2025, and
-developed into a complete theory over the months that followed.
+Muhammed Ismail is a theoretical mathematician based in South Africa,
+working on formal verification and decision theory under uncertainty, with
+companion work in economics and psychology. The six primitives were first
+noticed as a recurring pattern in his own decision-making in September
+2025, and developed into a complete theory over the months that followed.
 
-As an unaffiliated researcher, a result that needs specialists in formal
-logic and decision theory to evaluate the mathematics, so the proof
-was built in Lean 4: every claim the kernel checks deterministically,
-without the need to check the author. Ismail then learnt Mathlib well enough
-to produce this repository's ~12,700 lines, and, as a byproduct of
-the learning itself, [Ismail's Glossary](#related-project-ismails-glossary).
+The proof was built in Lean 4 — every claim checked by the kernel
+deterministically. Ismail then learned Mathlib well enough to produce this
+repository's ~12,700 lines, and, as a byproduct of the learning itself,
+[Ismail's Glossary](#related-project-ismails-glossary).
 
-Email: <literacity@outlook.com> · ORCID: [0009-0000-3713-7105](https://orcid.org/0009-0000-3713-7105) · [LinkedIn](https://www.linkedin.com/in/researcher-adaptationtheory/) 
+Email: <literacity@outlook.com> · ORCID: [0009-0000-3713-7105](https://orcid.org/0009-0000-3713-7105) · [LinkedIn](https://www.linkedin.com/in/researcher-adaptationtheory/)
