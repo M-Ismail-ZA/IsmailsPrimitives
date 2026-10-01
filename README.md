@@ -2,17 +2,17 @@
 *A Unified Functional Theory of Necessity, Independence, and Sequential Dependence in Adaptive Decision Systems*
 
 [![build](https://github.com/M-Ismail-ZA/IsmailsPrimitives/actions/workflows/build.yml/badge.svg)](https://github.com/M-Ismail-ZA/IsmailsPrimitives/actions/workflows/build.yml)
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21177368.svg)](https://doi.org/10.5281/zenodo.21177368)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23080967.svg)](https://doi.org/10.5281/zenodo.23080967)
 ![code license](https://img.shields.io/badge/code--license-MIT-blue)
 ![paper license](https://img.shields.io/badge/paper--license-CC--BY--4.0-lightgrey)
 
-**[Website](https://m-ismail-za.github.io/IsmailsPrimitives/) · [Glossary](https://m-ismail-za.github.io/IsmailsGlossary/) · [Paper (DOI)](https://doi.org/10.5281/zenodo.21177368)**
+**[Website](https://m-ismail-za.github.io/IsmailsPrimitives/) · [Glossary](https://m-ismail-za.github.io/IsmailsGlossary/) · [Paper (DOI)](https://doi.org/10.5281/zenodo.23080967)**
 
 A complete Lean 4 / Mathlib formalization of **Ismail's Primitives**: a
 functional theory of necessity, independence, and sequential dependence for
 adaptive decision-making under uncertainty. This repository is the formal,
 machine-checked companion to the paper of the same name — published on
-Zenodo, DOI: [10.5281/zenodo.21177368](https://doi.org/10.5281/zenodo.21177368).
+Zenodo, DOI: [10.5281/zenodo.23080967](https://doi.org/10.5281/zenodo.23080967).
 For the broader motivation, the POMDP framing, and worked examples across
 investing, insurance, and consulting, see the
 [companion website](https://m-ismail-za.github.io/IsmailsPrimitives/) — this
@@ -176,8 +176,8 @@ source it names, not taken on faith.
 
 **Ismail's Primitives: A Unified Functional Theory of Necessity,
 Independence, and Sequential Dependence in Adaptive Decision Systems**
-Muhammed Ismail, Zenodo, V6.1 (2026).
-DOI: [10.5281/zenodo.21177368](https://doi.org/10.5281/zenodo.21177368) · CC BY 4.0
+Muhammed Ismail, Zenodo, V6.2 (2026).
+DOI: [10.5281/zenodo.23080967](https://doi.org/10.5281/zenodo.23080967) · CC BY 4.0
 
 ```bibtex
 @article{ismail2026primitives,
@@ -187,9 +187,9 @@ DOI: [10.5281/zenodo.21177368](https://doi.org/10.5281/zenodo.21177368) · CC BY
                Systems},
   year      = {2026},
   publisher = {Zenodo},
-  version   = {V6.1},
-  doi       = {10.5281/zenodo.21177368},
-  url       = {https://doi.org/10.5281/zenodo.21177368}
+  version   = {V6.2},
+  doi       = {10.5281/zenodo.23080967},
+  url       = {https://doi.org/10.5281/zenodo.23080967}
 }
 ```
 
