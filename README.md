@@ -239,6 +239,7 @@ reference for learning Lean itself.
 - Paper: *Ismail's Glossary: A Complete Navigation Index for Mathlib4*,
   Zenodo, V1.0 (2026).
   DOI: [10.5281/zenodo.21192789](https://doi.org/10.5281/zenodo.21192789)
+- Decisional Integrity: [github.com/decisional-integrity/Field](https://github.com/decisional-integrity/Field) 
 
 ## License
 
