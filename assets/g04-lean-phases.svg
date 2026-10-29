@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="570" viewBox="0 0 880 570" role="img" aria-labelledby="g04-lean-phases-t g04-lean-phases-d">
+<title id="g04-lean-phases-t">The Lean library, phase by phase</title>
+<desc id="g04-lean-phases-d">Bar chart of Lean source lines per file: Phase0 259, Phase1 1,603, Phase2 4,842, Phase2CMI 1,029, Phase3 2,600, Phase4 1,534 and Phase5 800, totalling 12,667 lines. Phases 3, 4 and 5 are Parts I, II and III of the theory; the rest is framework and infrastructure.</desc>
+<defs>
+<filter id="g04-lean-phases-sh" x="-5%" y="-10%" width="110%" height="130%"><feDropShadow dx="0" dy="4" stdDeviation="9" flood-color="#141414" flood-opacity="0.05"/></filter>
+<clipPath id="g04-lean-phases-cc"><rect x="16" y="12" width="848" height="546" rx="10"/></clipPath>
+<marker id="g04-lean-phases-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,1 L10,5 L0,9 z" fill="#5B5850"/></marker>
+</defs>
+<rect x="16" y="12" width="848" height="546" rx="10" fill="#FFFFFF" stroke="#E4E1D8" stroke-width="1" filter="url(#g04-lean-phases-sh)"/>
+<g clip-path="url(#g04-lean-phases-cc)"><rect x="16" y="12" width="848" height="3" fill="#0F766E"/></g>
+<text x="44" y="46" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="11" fill="#0F766E" font-weight="700" letter-spacing="0.9">THE LEAN LIBRARY, PHASE BY PHASE</text>
+<text x="44" y="91" font-family="ui-monospace, SFMono-Regular, Consolas, 'Liberation Mono', monospace" font-size="13" fill="#0F766E" font-weight="700">Phase0.lean</text>
+<text x="44" y="107" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="12" fill="#5B5850">Framework types: Env, Algorithm, the six primitive predicates</text>
+<rect x="380" y="83" width="14.4424" height="24" rx="0" fill="#ECF4F3" stroke="#0F766E" stroke-width="1.5"/>
+<text x="402.442" y="101" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="14" fill="#000000" font-weight="700">259</text>
+<line x1="44" y1="124" x2="836" y2="124" stroke="#E4E1D8" stroke-width="1"/>
+<text x="44" y="145" font-family="ui-monospace, SFMono-Regular, Consolas, 'Liberation Mono', monospace" font-size="13" fill="#0F766E" font-weight="700">Phase1.lean</text>
+<text x="44" y="161" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="12" fill="#5B5850">Supporting lemmas (probability, analysis)</text>
+<rect x="380" y="137" width="89.3866" height="24" rx="0" fill="#ECF4F3" stroke="#0F766E" stroke-width="1.5"/>
+<text x="477.387" y="155" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="14" fill="#000000" font-weight="700">1,603</text>
+<line x1="44" y1="178" x2="836" y2="178" stroke="#E4E1D8" stroke-width="1"/>
+<text x="44" y="199" font-family="ui-monospace, SFMono-Regular, Consolas, 'Liberation Mono', monospace" font-size="13" fill="#0F766E" font-weight="700">Phase2.lean</text>
+<text x="44" y="215" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="12" fill="#5B5850">Trajectory measure &amp; environments</text>
+<rect x="380" y="191" width="270" height="24" rx="0" fill="#ECF4F3" stroke="#0F766E" stroke-width="1.5"/>
+<text x="658" y="209" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="14" fill="#000000" font-weight="700">4,842</text>
+<line x1="44" y1="232" x2="836" y2="232" stroke="#E4E1D8" stroke-width="1"/>
+<text x="44" y="253" font-family="ui-monospace, SFMono-Regular, Consolas, 'Liberation Mono', monospace" font-size="13" fill="#0F766E" font-weight="700">Phase2CMI.lean</text>
+<text x="44" y="269" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="12" fill="#5B5850">Conditional mutual information</text>
+<rect x="380" y="245" width="57.3792" height="24" rx="0" fill="#ECF4F3" stroke="#0F766E" stroke-width="1.5"/>
+<text x="445.379" y="263" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="14" fill="#000000" font-weight="700">1,029</text>
+<line x1="44" y1="286" x2="836" y2="286" stroke="#E4E1D8" stroke-width="1"/>
+<text x="44" y="307" font-family="ui-monospace, SFMono-Regular, Consolas, 'Liberation Mono', monospace" font-size="13" fill="#0F766E" font-weight="700">Phase3.lean</text>
+<text x="44" y="323" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="12" fill="#5B5850">Necessity of each primitive</text>
+<rect x="380" y="299" width="144.981" height="24" fill="#0F766E"/>
+<text x="532.981" y="317" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="14" fill="#000000" font-weight="700">2,600</text>
+<rect x="740" y="301" width="57.9625" height="22" rx="11" fill="#ECF4F3"/>
+<text x="750" y="316" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="11" fill="#0C5B55" font-weight="700" letter-spacing="0.4">PART I</text>
+<line x1="44" y1="340" x2="836" y2="340" stroke="#E4E1D8" stroke-width="1"/>
+<text x="44" y="361" font-family="ui-monospace, SFMono-Regular, Consolas, 'Liberation Mono', monospace" font-size="13" fill="#0F766E" font-weight="700">Phase4.lean</text>
+<text x="44" y="377" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="12" fill="#5B5850">Mutual independence, all thirty pairs</text>
+<rect x="380" y="353" width="85.539" height="24" fill="#0F766E"/>
+<text x="473.539" y="371" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="14" fill="#000000" font-weight="700">1,534</text>
+<rect x="740" y="355" width="62.6437" height="22" rx="11" fill="#ECF4F3"/>
+<text x="750" y="370" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="11" fill="#0C5B55" font-weight="700" letter-spacing="0.4">PART II</text>
+<line x1="44" y1="394" x2="836" y2="394" stroke="#E4E1D8" stroke-width="1"/>
+<text x="44" y="415" font-family="ui-monospace, SFMono-Regular, Consolas, 'Liberation Mono', monospace" font-size="13" fill="#0F766E" font-weight="700">Phase5.lean</text>
+<text x="44" y="431" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="12" fill="#5B5850">Sequential dependence &amp; martingale convergence</text>
+<rect x="380" y="407" width="44.6097" height="24" fill="#0F766E"/>
+<text x="432.61" y="425" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="14" fill="#000000" font-weight="700">800</text>
+<rect x="740" y="409" width="67.325" height="22" rx="11" fill="#ECF4F3"/>
+<text x="750" y="424" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="11" fill="#0C5B55" font-weight="700" letter-spacing="0.4">PART III</text>
+<line x1="44" y1="448" x2="836" y2="448" stroke="#0F766E" stroke-width="1.5"/>
+<text x="44" y="476" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="14" fill="#0F766E" font-weight="700">Total</text>
+<text x="380" y="476" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="14" fill="#000000" font-weight="700">12,667 lines across seven files</text>
+<rect x="44" y="492" width="22" height="14" rx="0" fill="#ECF4F3" stroke="#0F766E" stroke-width="1.5"/>
+<text x="74" y="504" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="12" fill="#5B5850">Framework and infrastructure</text>
+<rect x="272" y="492" width="22" height="14" fill="#0F766E"/>
+<text x="302" y="504" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="12" fill="#5B5850">A Part of the theory</text>
+<text x="44" y="530" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="12" fill="#5B5850" font-style="italic">Dependency order: Phase0 → Phase1 → Phase2 → Phase2CMI → Phase3 → Phase4 → Phase5</text>
+</svg>

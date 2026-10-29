@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="424" viewBox="0 0 880 424" role="img" aria-labelledby="g06-assessment-pipeline-t g06-assessment-pipeline-d">
+<title id="g06-assessment-pipeline-t">From theorem to assessment</title>
+<desc id="g06-assessment-pipeline-d">Four steps: distil a proposal to a POMDP, identify which of the six structural properties are present, assess whether the decision-maker possesses the matching primitives, then declare the outcome. If all required primitives are possessed the proposal avoids guaranteed linear regret; if any is lacking it suffers linear regret.</desc>
+<defs>
+<filter id="g06-assessment-pipeline-sh" x="-5%" y="-10%" width="110%" height="130%"><feDropShadow dx="0" dy="4" stdDeviation="9" flood-color="#141414" flood-opacity="0.05"/></filter>
+<clipPath id="g06-assessment-pipeline-cc"><rect x="16" y="12" width="848" height="400" rx="10"/></clipPath>
+<marker id="g06-assessment-pipeline-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,1 L10,5 L0,9 z" fill="#5B5850"/></marker>
+</defs>
+<rect x="16" y="12" width="848" height="400" rx="10" fill="#FFFFFF" stroke="#E4E1D8" stroke-width="1" filter="url(#g06-assessment-pipeline-sh)"/>
+<g clip-path="url(#g06-assessment-pipeline-cc)"><rect x="16" y="12" width="848" height="3" fill="#0F766E"/></g>
+<text x="44" y="46" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="11" fill="#0F766E" font-weight="700" letter-spacing="0.9">FROM THEOREM TO ASSESSMENT</text>
+<rect x="44" y="72" width="170" height="150" rx="6" fill="none" stroke="#0F766E" stroke-width="2"/>
+<text x="56" y="97" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="16" fill="#0F766E" font-weight="700">Proposal</text>
+<text x="56" y="117" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="13" fill="#000000">A business plan, strategic</text>
+<text x="56" y="135" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="13" fill="#000000">initiative, investment thesis</text>
+<text x="56" y="153" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="13" fill="#000000">or institutional policy: a</text>
+<text x="56" y="171" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="13" fill="#000000">formalized decision</text>
+<text x="56" y="189" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="13" fill="#000000">structure.</text>
+<path d="M216,147 L249.33,147" fill="none" stroke="#5B5850" stroke-width="1.5" marker-end="url(#g06-assessment-pipeline-ar)"/>
+<rect x="251.33" y="72" width="170" height="150" rx="6" fill="none" stroke="#0F766E" stroke-width="2"/>
+<text x="263.33" y="97" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="16" fill="#0F766E" font-weight="700">Distil to a POMDP</text>
+<text x="263.33" y="117" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="13" fill="#000000">States, actions,</text>
+<text x="263.33" y="135" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="13" fill="#000000">observations, transitions,</text>
+<text x="263.33" y="153" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="13" fill="#000000">rewards and the initial</text>
+<text x="263.33" y="171" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="13" fill="#000000">distribution.</text>
+<path d="M423.33,147 L456.66,147" fill="none" stroke="#5B5850" stroke-width="1.5" marker-end="url(#g06-assessment-pipeline-ar)"/>
+<rect x="458.66" y="72" width="170" height="150" rx="6" fill="none" stroke="#0F766E" stroke-width="2"/>
+<text x="470.66" y="97" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="16" fill="#0F766E" font-weight="700">Identify Class C</text>
+<text x="470.66" y="116" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="16" fill="#0F766E" font-weight="700">properties</text>
+<text x="470.66" y="136" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="13" fill="#000000">Which of P₁–P₆ are</text>
+<text x="470.66" y="154" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="13" fill="#000000">present? Any one puts the</text>
+<text x="470.66" y="172" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="13" fill="#000000">environment in Class C.</text>
+<path d="M630.66,147 L663.99,147" fill="none" stroke="#5B5850" stroke-width="1.5" marker-end="url(#g06-assessment-pipeline-ar)"/>
+<rect x="665.99" y="72" width="170" height="150" rx="6" fill="#ECF4F3" stroke="#0F766E" stroke-width="2"/>
+<text x="677.99" y="97" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="16" fill="#0F766E" font-weight="700">Assess the primitives</text>
+<text x="677.99" y="117" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="13" fill="#000000">For each property present,</text>
+<text x="677.99" y="135" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="13" fill="#000000">does the decision-maker</text>
+<text x="677.99" y="153" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="13" fill="#000000">possess the matching</text>
+<text x="677.99" y="171" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="13" fill="#000000">primitive?</text>
+<path d="M750.99,224 L750.99,246 L237,246 L237,270" fill="none" stroke="#5B5850" stroke-width="1.5" marker-end="url(#g06-assessment-pipeline-ar)"/>
+<path d="M750.99,224 L750.99,246 L643,246 L643,270" fill="none" stroke="#5B5850" stroke-width="1.5" marker-end="url(#g06-assessment-pipeline-ar)"/>
+<rect x="44" y="272" width="386" height="112" rx="6" fill="none" stroke="#0F766E" stroke-width="2"/>
+<text x="56" y="297" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="16" fill="#0F766E" font-weight="700">All required primitives possessed</text>
+<text x="56" y="317" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="13" fill="#000000">The proposal avoids guaranteed linear regret.</text>
+<text x="56" y="335" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="12" fill="#5B5850" font-style="italic">It may still fail for other reasons, but not due to structural decision-making</text>
+<text x="56" y="352" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="12" fill="#5B5850" font-style="italic">deficiencies.</text>
+<rect x="450" y="272" width="386" height="112" rx="6" fill="none" stroke="#0F766E" stroke-width="2"/>
+<text x="462" y="297" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="16" fill="#0F766E" font-weight="700">Any required primitive lacking</text>
+<text x="462" y="317" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="13" fill="#000000">The proposal will suffer linear regret.</text>
+</svg>

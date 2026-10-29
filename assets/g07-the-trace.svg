@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="360" viewBox="0 0 880 360" role="img" aria-labelledby="g07-the-trace-t g07-the-trace-d">
+<title id="g07-the-trace-t">How a claim traces to the axioms</title>
+<desc id="g07-the-trace-d">Five steps from a verdict on a real structure to a Field criterion, a numbered paper result, a named Lean theorem with file and line, and Mathlib's axioms. Below, the three-party check: Lean verifies Ismail, Ismail verifies the application, and the client verifies that the two agree.</desc>
+<defs>
+<filter id="g07-the-trace-sh" x="-5%" y="-10%" width="110%" height="130%"><feDropShadow dx="0" dy="4" stdDeviation="9" flood-color="#141414" flood-opacity="0.05"/></filter>
+<clipPath id="g07-the-trace-cc"><rect x="16" y="12" width="848" height="336" rx="10"/></clipPath>
+<marker id="g07-the-trace-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,1 L10,5 L0,9 z" fill="#5B5850"/></marker>
+</defs>
+<rect x="16" y="12" width="848" height="336" rx="10" fill="#FFFFFF" stroke="#E4E1D8" stroke-width="1" filter="url(#g07-the-trace-sh)"/>
+<g clip-path="url(#g07-the-trace-cc)"><rect x="16" y="12" width="848" height="3" fill="#0F766E"/></g>
+<text x="44" y="46" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="11" fill="#0F766E" font-weight="700" letter-spacing="0.9">HOW A CLAIM TRACES TO THE AXIOMS</text>
+<rect x="44" y="72" width="140" height="150" rx="6" fill="none" stroke="#0F766E" stroke-width="2"/>
+<text x="54" y="95" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="16" fill="#0F766E" font-weight="700">A finding</text>
+<text x="54" y="115" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="13" fill="#000000">A verdict on a real</text>
+<text x="54" y="133" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="13" fill="#000000">structure, primitive by</text>
+<text x="54" y="151" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="13" fill="#000000">primitive.</text>
+<path d="M186,147 L205,147" fill="none" stroke="#5B5850" stroke-width="1.5" marker-end="url(#g07-the-trace-ar)"/>
+<rect x="207" y="72" width="140" height="150" rx="6" fill="none" stroke="#0F766E" stroke-width="2"/>
+<text x="217" y="95" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="16" fill="#0F766E" font-weight="700">Field criterion</text>
+<text x="217" y="115" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="13" fill="#000000">What a structure must</text>
+<text x="217" y="133" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="13" fill="#000000">show to possess one</text>
+<text x="217" y="151" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="13" fill="#000000">primitive; names the</text>
+<text x="217" y="169" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="13" fill="#000000">Lean definitions it</text>
+<text x="217" y="187" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="13" fill="#000000">rests on.</text>
+<path d="M349,147 L368,147" fill="none" stroke="#5B5850" stroke-width="1.5" marker-end="url(#g07-the-trace-ar)"/>
+<rect x="370" y="72" width="140" height="150" rx="6" fill="none" stroke="#0F766E" stroke-width="2"/>
+<text x="380" y="95" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="16" fill="#0F766E" font-weight="700">Paper result</text>
+<text x="380" y="115" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="13" fill="#000000">A numbered result; the</text>
+<text x="380" y="133" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="13" fill="#000000">paper's appendix maps</text>
+<text x="380" y="151" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="13" fill="#000000">it to a Lean identifier.</text>
+<path d="M512,147 L531,147" fill="none" stroke="#5B5850" stroke-width="1.5" marker-end="url(#g07-the-trace-ar)"/>
+<rect x="533" y="72" width="140" height="150" rx="6" fill="none" stroke="#0F766E" stroke-width="2"/>
+<text x="543" y="95" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="16" fill="#0F766E" font-weight="700">Lean theorem</text>
+<text x="543" y="115" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="13" fill="#000000">A named theorem,</text>
+<text x="543" y="133" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="13" fill="#000000">with a file and a line.</text>
+<path d="M675,147 L694,147" fill="none" stroke="#5B5850" stroke-width="1.5" marker-end="url(#g07-the-trace-ar)"/>
+<rect x="696" y="72" width="140" height="150" rx="6" fill="#ECF4F3" stroke="#0F766E" stroke-width="2"/>
+<text x="706" y="95" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="16" fill="#0F766E" font-weight="700">Mathlib's axioms</text>
+<text x="706" y="115" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="13" fill="#000000">Lean's kernel checks</text>
+<text x="706" y="133" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="13" fill="#000000">every step from</text>
+<text x="706" y="151" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="13" fill="#000000">Mathlib's axioms</text>
+<text x="706" y="169" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="13" fill="#000000">alone.</text>
+<text x="44" y="262" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="11" fill="#0F766E" font-weight="700" letter-spacing="0.9">THREE-PARTY VERIFICATION</text>
+<rect x="44" y="276" width="252" height="44" rx="6" fill="none" stroke="#0F766E" stroke-width="2"/>
+<text x="170" y="303" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="13" fill="#0F766E" font-weight="700" text-anchor="middle">Lean verifies Ismail.</text>
+<path d="M297,298 L313,298" fill="none" stroke="#5B5850" stroke-width="1.5" marker-end="url(#g07-the-trace-ar)"/>
+<rect x="314" y="276" width="252" height="44" rx="6" fill="none" stroke="#0F766E" stroke-width="2"/>
+<text x="440" y="303" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="13" fill="#0F766E" font-weight="700" text-anchor="middle">Ismail verifies the application.</text>
+<path d="M567,298 L583,298" fill="none" stroke="#5B5850" stroke-width="1.5" marker-end="url(#g07-the-trace-ar)"/>
+<rect x="584" y="276" width="252" height="44" rx="6" fill="none" stroke="#0F766E" stroke-width="2"/>
+<text x="710" y="303" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="13" fill="#0F766E" font-weight="700" text-anchor="middle">The client verifies that the two agree.</text>
+</svg>

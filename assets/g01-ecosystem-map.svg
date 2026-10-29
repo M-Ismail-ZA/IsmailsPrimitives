@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="500" viewBox="0 0 880 500" role="img" aria-labelledby="g01-ecosystem-map-t g01-ecosystem-map-d">
+<title id="g01-ecosystem-map-t">Where this repository sits</title>
+<desc id="g01-ecosystem-map-d">Lean 4 and Mathlib's axioms support the IsmailsPrimitives repository (proof, paper and website), which in turn supports the four companion papers and the Field of Decisional Integrity. Ismail's Glossary indexes Mathlib and Ismail's Protocols checks the Field's writing; both are independent side projects.</desc>
+<defs>
+<filter id="g01-ecosystem-map-sh" x="-5%" y="-10%" width="110%" height="130%"><feDropShadow dx="0" dy="4" stdDeviation="9" flood-color="#141414" flood-opacity="0.05"/></filter>
+<clipPath id="g01-ecosystem-map-cc"><rect x="16" y="12" width="848" height="476" rx="10"/></clipPath>
+<marker id="g01-ecosystem-map-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,1 L10,5 L0,9 z" fill="#5B5850"/></marker>
+</defs>
+<rect x="16" y="12" width="848" height="476" rx="10" fill="#FFFFFF" stroke="#E4E1D8" stroke-width="1" filter="url(#g01-ecosystem-map-sh)"/>
+<g clip-path="url(#g01-ecosystem-map-cc)"><rect x="16" y="12" width="848" height="3" fill="#0F766E"/></g>
+<text x="44" y="46" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="11" fill="#0F766E" font-weight="700" letter-spacing="0.9">WHERE THIS REPOSITORY SITS</text>
+<rect x="44" y="150" width="200" height="70" rx="6" fill="none" stroke="#0F766E" stroke-width="2"/>
+<text x="56" y="175" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="16" fill="#0F766E" font-weight="700">Lean 4 + Mathlib</text>
+<text x="56" y="195" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="13" fill="#000000">Mathlib's axioms only</text>
+<rect x="284" y="104" width="240" height="170" rx="6" fill="#ECF4F3" stroke="#0F766E" stroke-width="2.5"/>
+<text x="296" y="129" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="16" fill="#0F766E" font-weight="700">IsmailsPrimitives</text>
+<text x="296" y="149" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="13" fill="#0C5B55" font-weight="700">This repository</text>
+<text x="296" y="167" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="13" fill="#000000">Lean 4 proof · 12,667 lines</text>
+<text x="296" y="185" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="13" fill="#000000">Paper V6.2 · DOI</text>
+<text x="296" y="203" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="13" fill="#000000">Project website</text>
+<text x="296" y="221" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="13" fill="#5B5850">Account: M-Ismail-ZA</text>
+<rect x="564" y="76" width="272" height="92" rx="6" fill="none" stroke="#0F766E" stroke-width="2"/>
+<text x="576" y="101" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="16" fill="#0F766E" font-weight="700">Companion papers</text>
+<text x="576" y="121" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="13" fill="#000000">Economics · Human development</text>
+<text x="576" y="139" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="13" fill="#000000">Emotional adaptation · SPEA</text>
+<text x="576" y="157" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="13" fill="#5B5850">Zenodo · CC BY 4.0</text>
+<rect x="564" y="196" width="272" height="112" rx="6" fill="none" stroke="#0F766E" stroke-width="2"/>
+<text x="576" y="221" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="16" fill="#0F766E" font-weight="700">The Field</text>
+<text x="576" y="241" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="13" fill="#000000">Decisional Integrity</text>
+<text x="576" y="259" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="13" fill="#000000">Dossier · field pages · Standard</text>
+<text x="576" y="277" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="13" fill="#5B5850">Account: decisional-integrity</text>
+<path d="M244,185 L282,185" fill="none" stroke="#5B5850" stroke-width="1.5" marker-end="url(#g01-ecosystem-map-ar)"/>
+<path d="M524,122 L562,122" fill="none" stroke="#5B5850" stroke-width="1.5" marker-end="url(#g01-ecosystem-map-ar)"/>
+<path d="M524,252 L562,252" fill="none" stroke="#5B5850" stroke-width="1.5" marker-end="url(#g01-ecosystem-map-ar)"/>
+<text x="44" y="326" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="11" fill="#5B5850" font-weight="700" letter-spacing="0.9">SIDE PROJECTS</text>
+<line x1="150" y1="322" x2="836" y2="322" stroke="#CFC9B8" stroke-width="1" stroke-dasharray="4 4"/>
+<rect x="44" y="352" width="240" height="76" rx="6" fill="none" stroke="#0F766E" stroke-width="2"/>
+<text x="56" y="377" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="16" fill="#0F766E" font-weight="700">Ismail's Glossary</text>
+<text x="56" y="397" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="13" fill="#000000">Navigation index for Mathlib4</text>
+<text x="56" y="415" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="13" fill="#000000">9,150 modules</text>
+<rect x="564" y="352" width="272" height="76" rx="6" fill="none" stroke="#0F766E" stroke-width="2"/>
+<text x="576" y="377" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="16" fill="#0F766E" font-weight="700">Ismail's Protocols</text>
+<text x="576" y="397" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="13" fill="#000000">Credibility Checker · AI Review</text>
+<text x="576" y="415" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="13" fill="#000000">Portable rule-based skills</text>
+<path d="M144,350 L144,222" fill="none" stroke="#5B5850" stroke-width="1.5" stroke-dasharray="4 4" marker-end="url(#g01-ecosystem-map-ar)"/>
+<text x="152" y="292" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="12" fill="#5B5850" font-style="italic" stroke="#FFFFFF" stroke-width="4" stroke-linejoin="round" paint-order="stroke">indexes Mathlib</text>
+<path d="M700,350 L700,310" fill="none" stroke="#5B5850" stroke-width="1.5" stroke-dasharray="4 4" marker-end="url(#g01-ecosystem-map-ar)"/>
+<text x="708" y="336" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="12" fill="#5B5850" font-style="italic" stroke="#FFFFFF" stroke-width="4" stroke-linejoin="round" paint-order="stroke">checks the Field's writing</text>
+<text x="44" y="460" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="12" fill="#5B5850" font-style="italic">Arrows run from what a layer rests on to what is built on it. Dashed: independent side projects.</text>
+</svg>

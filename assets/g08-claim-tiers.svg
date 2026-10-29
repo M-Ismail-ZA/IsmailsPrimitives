@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="490" viewBox="0 0 880 490" role="img" aria-labelledby="g08-claim-tiers-t g08-claim-tiers-d">
+<title id="g08-claim-tiers-t">What kind of claim each layer is</title>
+<desc id="g08-claim-tiers-d">The Field's four tiers of support. Machine-verified: Lean-checked results. Paper-proved: argued in the paper, not formalised. Domain readings: the theory read into a domain. Guide-invented methods: assessment methods, which the Field does not include. Only the first tier is checked by building the code.</desc>
+<defs>
+<filter id="g08-claim-tiers-sh" x="-5%" y="-10%" width="110%" height="130%"><feDropShadow dx="0" dy="4" stdDeviation="9" flood-color="#141414" flood-opacity="0.05"/></filter>
+<clipPath id="g08-claim-tiers-cc"><rect x="16" y="12" width="848" height="466" rx="10"/></clipPath>
+<marker id="g08-claim-tiers-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,1 L10,5 L0,9 z" fill="#5B5850"/></marker>
+</defs>
+<rect x="16" y="12" width="848" height="466" rx="10" fill="#FFFFFF" stroke="#E4E1D8" stroke-width="1" filter="url(#g08-claim-tiers-sh)"/>
+<g clip-path="url(#g08-claim-tiers-cc)"><rect x="16" y="12" width="848" height="3" fill="#0F766E"/></g>
+<text x="44" y="46" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="11" fill="#0F766E" font-weight="700" letter-spacing="0.9">WHAT KIND OF CLAIM EACH LAYER IS</text>
+<text x="44" y="78" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="11" fill="#0F766E" font-weight="700" letter-spacing="0.9">TIER</text>
+<text x="262" y="78" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="11" fill="#0F766E" font-weight="700" letter-spacing="0.9">WHAT SITS HERE</text>
+<text x="636" y="78" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="11" fill="#0F766E" font-weight="700" letter-spacing="0.9">HOW A READER CHECKS IT</text>
+<circle cx="60" cy="113" r="14" fill="#0C5B55" stroke="#0C5B55" stroke-width="2"/>
+<text x="60" y="118" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="15" fill="#FFFFFF" font-weight="700" text-anchor="middle">1</text>
+<text x="84" y="118" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="16" fill="#0F766E" font-weight="700">Machine-verified</text>
+<text x="262" y="118" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="13" fill="#000000">Part I necessity; Part II independence in the minimal witness</text>
+<text x="262" y="136" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="13" fill="#000000">environments; the line and construct counts. Part III results hold</text>
+<text x="262" y="154" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="13" fill="#000000">only conditionally on their stated hypotheses.</text>
+<text x="636" y="118" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="13" fill="#000000">Rebuild the project and read the</text>
+<text x="636" y="136" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="13" fill="#000000">statements.</text>
+<line x1="44" y1="174" x2="836" y2="174" stroke="#E4E1D8" stroke-width="1"/>
+<circle cx="60" cy="197" r="14" fill="#0F766E" stroke="#0F766E" stroke-width="2"/>
+<text x="60" y="202" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="15" fill="#FFFFFF" font-weight="700" text-anchor="middle">2</text>
+<text x="84" y="202" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="16" fill="#0F766E" font-weight="700">Paper-proved</text>
+<text x="262" y="202" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="13" fill="#000000">Argument in the paper, or in the standard literature it relies on, not</text>
+<text x="262" y="220" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="13" fill="#000000">formalised in Lean. Main example: the reduction from the minimal</text>
+<text x="262" y="238" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="13" fill="#000000">environment to any larger environment with the same difficulty.</text>
+<text x="636" y="202" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="13" fill="#000000">Read the argument and the</text>
+<text x="636" y="220" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="13" fill="#000000">literature.</text>
+<line x1="44" y1="258" x2="836" y2="258" stroke="#E4E1D8" stroke-width="1"/>
+<circle cx="60" cy="281" r="14" fill="#ECF4F3" stroke="#0F766E" stroke-width="2"/>
+<text x="60" y="286" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="15" fill="#0F766E" font-weight="700" text-anchor="middle">3</text>
+<text x="84" y="286" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="16" fill="#0F766E" font-weight="700">Domain readings</text>
+<text x="262" y="286" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="13" fill="#000000">The theory read into a domain or into plain language: what the</text>
+<text x="262" y="304" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="13" fill="#000000">definitions mean, business decision-making inside Class C, the</text>
+<text x="262" y="322" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="13" fill="#000000">mapping of methodologies to the primitives, error theory.</text>
+<text x="636" y="286" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="13" fill="#000000">Test against counterexamples and</text>
+<text x="636" y="304" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="13" fill="#000000">better arguments.</text>
+<line x1="44" y1="342" x2="836" y2="342" stroke="#E4E1D8" stroke-width="1"/>
+<circle cx="60" cy="365" r="14" fill="none" stroke="#5B5850" stroke-width="2" stroke-dasharray="3 3"/>
+<text x="60" y="370" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="15" fill="#5B5850" font-weight="700" text-anchor="middle">4</text>
+<text x="84" y="370" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="16" fill="#5B5850" font-weight="700">Guide-invented</text>
+<text x="84" y="388" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="16" fill="#5B5850" font-weight="700">methods</text>
+<text x="262" y="370" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="13" fill="#000000">Methods devised for carrying out an assessment, such as how</text>
+<text x="262" y="388" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="13" fill="#000000">evidence is gathered and weighed. None appear in the Field's</text>
+<text x="262" y="406" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="13" fill="#000000">pages, which state criteria and not methods.</text>
+<text x="636" y="370" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="13" fill="#5B5850">The tier does not apply to the Field's</text>
+<text x="636" y="388" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="13" fill="#5B5850">pages.</text>
+<line x1="44" y1="426" x2="836" y2="426" stroke="#0F766E" stroke-width="1.5"/>
+<text x="44" y="450" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="12" fill="#5B5850" font-style="italic">Only the first tier can be checked by building the code. After the Field's verification-tiers page.</text>
+</svg>

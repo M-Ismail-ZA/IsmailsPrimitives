@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="390" viewBox="0 0 880 390" role="img" aria-labelledby="g09-verify-yourself-t g09-verify-yourself-d">
+<title id="g09-verify-yourself-t">Verify it yourself</title>
+<desc id="g09-verify-yourself-d">Four steps: install Lean via elan, clone the repository, fetch the Mathlib dependency and its precompiled build cache, then run lake build. If the build finishes without error, every theorem checks under Lean's kernel.</desc>
+<defs>
+<filter id="g09-verify-yourself-sh" x="-5%" y="-10%" width="110%" height="130%"><feDropShadow dx="0" dy="4" stdDeviation="9" flood-color="#141414" flood-opacity="0.05"/></filter>
+<clipPath id="g09-verify-yourself-cc"><rect x="16" y="12" width="848" height="366" rx="10"/></clipPath>
+<marker id="g09-verify-yourself-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,1 L10,5 L0,9 z" fill="#5B5850"/></marker>
+</defs>
+<rect x="16" y="12" width="848" height="366" rx="10" fill="#FFFFFF" stroke="#E4E1D8" stroke-width="1" filter="url(#g09-verify-yourself-sh)"/>
+<g clip-path="url(#g09-verify-yourself-cc)"><rect x="16" y="12" width="848" height="3" fill="#0F766E"/></g>
+<text x="44" y="46" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="11" fill="#0F766E" font-weight="700" letter-spacing="0.9">VERIFY IT YOURSELF</text>
+<rect x="44" y="72" width="180" height="196" rx="6" fill="none" stroke="#0F766E" stroke-width="2"/>
+<circle cx="68" cy="98" r="13" fill="#0F766E"/>
+<text x="68" y="103" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="14" fill="#FFFFFF" font-weight="700" text-anchor="middle">1</text>
+<text x="90" y="102" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="16" fill="#0F766E" font-weight="700">Install Lean</text>
+<text x="56" y="160" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="13" fill="#000000">Via elan, the Lean version</text>
+<text x="56" y="178" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="13" fill="#000000">manager.</text>
+<path d="M226,170 L246,170" fill="none" stroke="#5B5850" stroke-width="1.5" marker-end="url(#g09-verify-yourself-ar)"/>
+<rect x="248" y="72" width="180" height="196" rx="6" fill="none" stroke="#0F766E" stroke-width="2"/>
+<circle cx="272" cy="98" r="13" fill="#0F766E"/>
+<text x="272" y="103" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="14" fill="#FFFFFF" font-weight="700" text-anchor="middle">2</text>
+<text x="294" y="102" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="16" fill="#0F766E" font-weight="700">Clone the</text>
+<text x="294" y="120" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="16" fill="#0F766E" font-weight="700">repository</text>
+<rect x="260" y="204" width="156" height="50" rx="6" fill="#F7F6F1" stroke="#E4E1D8" stroke-width="1"/>
+<text x="268" y="224" font-family="ui-monospace, SFMono-Regular, Consolas, 'Liberation Mono', monospace" font-size="11" fill="#000000">git clone &lt;repo URL&gt;</text>
+<text x="268" y="242" font-family="ui-monospace, SFMono-Regular, Consolas, 'Liberation Mono', monospace" font-size="11" fill="#000000">cd IsmailsPrimitives</text>
+<path d="M430,170 L450,170" fill="none" stroke="#5B5850" stroke-width="1.5" marker-end="url(#g09-verify-yourself-ar)"/>
+<rect x="452" y="72" width="180" height="196" rx="6" fill="none" stroke="#0F766E" stroke-width="2"/>
+<circle cx="476" cy="98" r="13" fill="#0F766E"/>
+<text x="476" y="103" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="14" fill="#FFFFFF" font-weight="700" text-anchor="middle">3</text>
+<text x="498" y="102" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="16" fill="#0F766E" font-weight="700">Fetch Mathlib and</text>
+<text x="498" y="120" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="16" fill="#0F766E" font-weight="700">its cache</text>
+<text x="464" y="160" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="13" fill="#000000">Minutes instead of hours.</text>
+<rect x="464" y="204" width="156" height="50" rx="6" fill="#F7F6F1" stroke="#E4E1D8" stroke-width="1"/>
+<text x="472" y="224" font-family="ui-monospace, SFMono-Regular, Consolas, 'Liberation Mono', monospace" font-size="11" fill="#000000">lake update</text>
+<text x="472" y="242" font-family="ui-monospace, SFMono-Regular, Consolas, 'Liberation Mono', monospace" font-size="11" fill="#000000">lake exe cache get</text>
+<path d="M634,170 L654,170" fill="none" stroke="#5B5850" stroke-width="1.5" marker-end="url(#g09-verify-yourself-ar)"/>
+<rect x="656" y="72" width="180" height="196" rx="6" fill="none" stroke="#0F766E" stroke-width="2"/>
+<circle cx="680" cy="98" r="13" fill="#0F766E"/>
+<text x="680" y="103" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="14" fill="#FFFFFF" font-weight="700" text-anchor="middle">4</text>
+<text x="702" y="102" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="16" fill="#0F766E" font-weight="700">Build</text>
+<rect x="668" y="222" width="156" height="32" rx="6" fill="#F7F6F1" stroke="#E4E1D8" stroke-width="1"/>
+<text x="676" y="242" font-family="ui-monospace, SFMono-Regular, Consolas, 'Liberation Mono', monospace" font-size="11" fill="#000000">lake build</text>
+<path d="M746,270 L746,296" fill="none" stroke="#5B5850" stroke-width="1.5" marker-end="url(#g09-verify-yourself-ar)"/>
+<rect x="44" y="298" width="792" height="52" rx="6" fill="#ECF4F3" stroke="#0F766E" stroke-width="2"/>
+<text x="440" y="330" font-family="'Times New Roman', Tinos, 'Liberation Serif', Times, serif" font-size="15" fill="#0C5B55" font-weight="700" text-anchor="middle">Finishes without error: every theorem in the repository checks under Lean's kernel.</text>
+</svg>
