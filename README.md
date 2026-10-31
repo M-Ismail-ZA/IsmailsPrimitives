@@ -14,6 +14,8 @@
 
 **[Website](https://m-ismail-za.github.io/IsmailsPrimitives/) · [Glossary](https://m-ismail-za.github.io/IsmailsGlossary/) · [Paper (DOI)](https://doi.org/10.5281/zenodo.23080967) · [The Field](https://decisional-integrity.github.io/Field/)**
 
+**What must a decision-maker get right, structurally, to avoid failure under uncertainty?**
+
 A complete Lean 4 / Mathlib formalization of **Ismail's Primitives**: a
 functional theory of necessity, independence, and sequential dependence for
 adaptive decision-making under uncertainty. This repository is the formal,
