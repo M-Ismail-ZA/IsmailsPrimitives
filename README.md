@@ -562,7 +562,7 @@ companion work in economics and psychology. The six primitives were first
 noticed as a recurring pattern in his own decision-making in September
 2025, and developed into a complete theory over the months that followed.
 
-The proof was built in Lean 4 — every claim checked by the kernel
+The proof was built in Lean 4 and every claim is checked by the kernel
 deterministically. Ismail then learned Mathlib well enough to produce this
 repository's 12,667 lines, and, as a byproduct of the learning itself,
 [Ismail's Glossary](#related-project-ismails-glossary).
